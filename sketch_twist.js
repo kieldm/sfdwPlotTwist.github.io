@@ -27,7 +27,6 @@ var rotZcamera = 0;
 function preload(){
   // tFont[0] = loadFont("resources/NeueMontreal-LightItalic.otf");
   tFont[0] = loadFont("resources/Linotype - Neue Haas Grotesk Text Std 55 Roman.ttf");
-
   pgImage[0] = loadImage("resources/images_opt/flower0.JPG");
   pgImage[1] = loadImage("resources/images_opt/flower1.JPG");
   pgImage[2] = loadImage("resources/images_opt/flower2.JPG");
@@ -43,6 +42,7 @@ function preload(){
   pgImage[12] = loadImage("resources/images_opt/palms0.JPG");
   pgImage[13] = loadImage("resources/images_opt/palms1.JPG");
   pgImage[14] = loadImage("resources/images_opt/water0.JPG");
+  
 }
 
 function setup(){
