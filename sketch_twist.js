@@ -12,19 +12,37 @@ var pgImage = [];
 
 var colorA = [];
 var colorTop, colorBot, colorIn, colorOut;
+var pgTop, pgBot, pgIn, pgOut;
 
 var topMode = 0;
 var botMode = 0;
 var inMode = 0;
-var outMode = 0;
+var outMode = 1;
 
 var mainTwist;
+
+var rotXcamera = 0;
+var rotZcamera = 0;
 
 function preload(){
   // tFont[0] = loadFont("resources/NeueMontreal-LightItalic.otf");
   tFont[0] = loadFont("resources/Linotype - Neue Haas Grotesk Text Std 55 Roman.ttf");
 
-  pgImage[0] = loadImage("resources/images/flower0.JPG");
+  pgImage[0] = loadImage("resources/images_opt/flower0.JPG");
+  pgImage[1] = loadImage("resources/images_opt/flower1.JPG");
+  pgImage[2] = loadImage("resources/images_opt/flower2.JPG");
+  pgImage[3] = loadImage("resources/images_opt/flower3.JPG");
+  pgImage[4] = loadImage("resources/images_opt/flower4.JPG");
+  pgImage[5] = loadImage("resources/images_opt/flower5.JPG");
+  pgImage[6] = loadImage("resources/images_opt/city0.JPG");
+  pgImage[7] = loadImage("resources/images_opt/city1.JPG");
+  pgImage[8] = loadImage("resources/images_opt/city2.JPG");
+  pgImage[9] = loadImage("resources/images_opt/city3.JPG");
+  pgImage[10] = loadImage("resources/images_opt/evening0.JPG");
+  pgImage[11] = loadImage("resources/images_opt/evening1.JPG");
+  pgImage[12] = loadImage("resources/images_opt/palms0.JPG");
+  pgImage[13] = loadImage("resources/images_opt/palms1.JPG");
+  pgImage[14] = loadImage("resources/images_opt/water0.JPG");
 }
 
 function setup(){
@@ -43,6 +61,11 @@ function setup(){
   colorIn = colorA[5];
   colorOut = colorA[6];
 
+  pgIn = pgImage[0];
+  pgOut = pgImage[0];
+  pgTop = pgImage[0];
+  pgBot = pgImage[0];
+
   noSmooth();
   textureMode(NORMAL);
 
@@ -58,8 +81,10 @@ function draw(){
   ortho(-width/2, width/2, -height/2, height/2, -10000, 100000);
   // ortho();
   // orbitControl();
-
+  
   push();
+    rotateX(rotXcamera);
+    rotateZ(rotZcamera);
     mainTwist.update();
     mainTwist.display();
   pop();

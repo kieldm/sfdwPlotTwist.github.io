@@ -8,17 +8,17 @@ class TwistMain {
     this.stripH = 150;
 
     this.ang = 2*PI/this.res;
+
+    this.culmVhalf = this.res * this.slope * this.twists/2;
   }
 
   update(){
-
+    this.culmVhalf = this.res * this.slope * this.twists/2;
   }
 
   display(){
-    var centerU, centerV; 
-
     push();
-      translate(0, -this.res * this.slope * this.twists/2);
+      translate(0, -this.culmVhalf);
       for(var m = 0; m < this.twists; m++){
         push();
           translate(0, this.res * this.slope * m);
@@ -27,10 +27,30 @@ class TwistMain {
           noStroke();
 
           for(var p = 0; p < 2; p++){
-            if(p==0){
+            var centerU = 0;
+            var centerV = 0;
+            var currentTexture;
+            var textureOn = false;
+
+            if(p == 0 && topMode == 1){
+              currentTexture = pgTop;
+            } else if(p == 0 && topMode == 2){
+              currentTexture = pgTop;
+            } else if(p == 1 && botMode == 1){
+              currentTexture = pgBot;
+            } else if(p == 1 && botMode == 2){
+              currentTexture = pgBot;
+            }
+
+            if(p == 0 && topMode == 0){
               fill(colorTop);
-            } else {
+            } else if(p == 1 && botMode == 0){
               fill(colorBot);
+            } else {
+              texture(currentTexture);
+              centerU = -currentTexture.width/2;
+              centerV = -currentTexture.height/2;
+              textureOn = true;
             }
 
             beginShape(TRIANGLE_STRIP);
@@ -43,22 +63,46 @@ class TwistMain {
               var xOut = cos(n * this.ang) * (this.radius + this.stripH/2);
               var zOut = sin(n * this.ang) * (this.radius + this.stripH/2);
               
-              vertex(xIn, y, zIn);
-              vertex(xOut, y, zOut);
+              var uIn = 0; var uOut = 0; var vIn = 0; var vOut = 0;
+              if(textureOn){
+                uIn = map(xIn, centerU, centerU + currentTexture.width, 0, 1);
+                uOut = map(xOut, centerU, centerU + currentTexture.width, 0, 1);
+                vIn = map(zIn, centerV, centerV + currentTexture.height, 0, 1);
+                vOut = map(zOut, centerV, centerV + currentTexture.height, 0, 1);
+              }
+              
+              vertex(xIn, y, zIn, uIn, vIn);
+              vertex(xOut, y, zOut, uOut, vOut);
             }
             endShape();
           }
 
           ////// IN/OUT
           for(var p = 0; p < 2; p++){
-            if(p==0){
-              fill(colorIn);
-            } else {
-              texture(pgImage[0]);
-              centerU = -pgImage[0].width/2;
+            var centerU = 0;
+            var centerV = 0;
+            var currentTexture;
+            var textureOn = false;
 
-              var culm = this.res * this.slope * this.twists/2;
-              centerV = culm - pgImage[0].width/2;
+            if(p == 0 && inMode == 1){
+              currentTexture = pgIn;
+            } else if(p == 0 && inMode == 2){
+              currentTexture = pgIn;
+            } else if(p == 1 && outMode == 1){
+              currentTexture = pgOut;
+            } else if(p == 1 && outMode == 2){
+              currentTexture = pgOut;
+            }
+
+            if(p == 0 && inMode == 0){
+              fill(colorIn);
+            } else if(p == 1 && outMode == 0){
+              fill(colorOut);
+            } else {
+              texture(currentTexture);
+              centerU = -currentTexture.width/2;
+              centerV = this.culmVhalf - currentTexture.height/2;
+              textureOn = true;
             }
 
             beginShape(TRIANGLE_STRIP);
@@ -69,9 +113,12 @@ class TwistMain {
               var yTop = this.slope * n;
               var yBot = this.slope * n + this.stripH;
               
-              var u = map(x, centerU, centerU + pgImage[0].width, 0, 1);
-              var vTop = map(yTop + m * this.res * this.slope, centerV, centerV + pgImage[0].height, 0, 1);
-              var vBot = map(yBot + m * this.res * this.slope, centerV, centerV + pgImage[0].height, 0, 1);
+              var u = 0; var vTop = 0; var vBot = 0;
+              if(textureOn){
+                u = map(x, centerU, centerU + currentTexture.width, 0, 1);
+                vTop = map(yTop + m * this.res * this.slope, centerV, centerV + currentTexture.height, 0, 1);
+                vBot = map(yBot + m * this.res * this.slope, centerV, centerV + currentTexture.height, 0, 1);
+              } 
 
               vertex(x, yTop, z, u, vTop);
               vertex(x, yBot, z, u, vBot);
