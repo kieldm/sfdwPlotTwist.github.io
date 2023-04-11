@@ -27,22 +27,22 @@ var rotZcamera = 0;
 function preload(){
   // tFont[0] = loadFont("resources/NeueMontreal-LightItalic.otf");
   tFont[0] = loadFont("resources/Linotype - Neue Haas Grotesk Text Std 55 Roman.ttf");
-  pgImage[0] = loadImage("resources/images_opt/flower0.JPG");
-  pgImage[1] = loadImage("resources/images_opt/flower1.JPG");
-  pgImage[2] = loadImage("resources/images_opt/flower2.JPG");
-  pgImage[3] = loadImage("resources/images_opt/flower3.JPG");
-  pgImage[4] = loadImage("resources/images_opt/flower4.JPG");
-  pgImage[5] = loadImage("resources/images_opt/flower5.JPG");
-  pgImage[6] = loadImage("resources/images_opt/city0.JPG");
-  pgImage[7] = loadImage("resources/images_opt/city1.JPG");
-  pgImage[8] = loadImage("resources/images_opt/city2.JPG");
-  pgImage[9] = loadImage("resources/images_opt/city3.JPG");
-  pgImage[10] = loadImage("resources/images_opt/evening0.JPG");
-  pgImage[11] = loadImage("resources/images_opt/evening1.JPG");
-  pgImage[12] = loadImage("resources/images_opt/palms0.JPG");
-  pgImage[13] = loadImage("resources/images_opt/palms1.JPG");
-  pgImage[14] = loadImage("resources/images_opt/water0.JPG");
-  
+
+  pgImage[0] = loadImage("resources/images/flower0.JPG");
+  pgImage[1] = loadImage("resources/images/flower1.JPG");
+  pgImage[2] = loadImage("resources/images/flower2.JPG");
+  pgImage[3] = loadImage("resources/images/flower3.JPG");
+  pgImage[4] = loadImage("resources/images/flower4.JPG");
+  pgImage[5] = loadImage("resources/images/flower5.JPG");
+  pgImage[6] = loadImage("resources/images/city0.JPG");
+  pgImage[7] = loadImage("resources/images/city1.JPG");
+  pgImage[8] = loadImage("resources/images/city2.JPG");
+  pgImage[9] = loadImage("resources/images/city3.JPG");
+  pgImage[10] = loadImage("resources/images/evening0.JPG");
+  pgImage[11] = loadImage("resources/images/evening1.JPG");
+  pgImage[12] = loadImage("resources/images/palms0.JPG");
+  pgImage[13] = loadImage("resources/images/palms1.JPG");
+  pgImage[14] = loadImage("resources/images/water0.JPG");
 }
 
 function setup(){
