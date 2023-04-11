@@ -28,21 +28,21 @@ function preload(){
   // tFont[0] = loadFont("resources/NeueMontreal-LightItalic.otf");
   tFont[0] = loadFont("resources/Linotype - Neue Haas Grotesk Text Std 55 Roman.ttf");
 
-  pgImage[0] = loadImage("resources/images/flower0.JPG");
-  pgImage[1] = loadImage("resources/images/flower1.JPG");
-  pgImage[2] = loadImage("resources/images/flower2.JPG");
-  pgImage[3] = loadImage("resources/images/flower3.JPG");
-  pgImage[4] = loadImage("resources/images/flower4.JPG");
-  pgImage[5] = loadImage("resources/images/flower5.JPG");
-  pgImage[6] = loadImage("resources/images/city0.JPG");
-  pgImage[7] = loadImage("resources/images/city1.JPG");
-  pgImage[8] = loadImage("resources/images/city2.JPG");
-  pgImage[9] = loadImage("resources/images/city3.JPG");
-  pgImage[10] = loadImage("resources/images/evening0.JPG");
-  pgImage[11] = loadImage("resources/images/evening1.JPG");
-  pgImage[12] = loadImage("resources/images/palms0.JPG");
-  pgImage[13] = loadImage("resources/images/palms1.JPG");
-  pgImage[14] = loadImage("resources/images/water0.JPG");
+  pgImage[0] = loadImage("resources/images/flower0.jpg");
+  pgImage[1] = loadImage("resources/images/flower1.jpg");
+  pgImage[2] = loadImage("resources/images/flower2.jpg");
+  pgImage[3] = loadImage("resources/images/flower3.jpg");
+  pgImage[4] = loadImage("resources/images/flower4.jpg");
+  pgImage[5] = loadImage("resources/images/flower5.jpg");
+  pgImage[6] = loadImage("resources/images/city0.jpg");
+  pgImage[7] = loadImage("resources/images/city1.jpg");
+  pgImage[8] = loadImage("resources/images/city2.jpg");
+  pgImage[9] = loadImage("resources/images/city3.jpg");
+  pgImage[10] = loadImage("resources/images/evening0.jpg");
+  pgImage[11] = loadImage("resources/images/evening1.jpg");
+  pgImage[12] = loadImage("resources/images/palms0.jpg");
+  pgImage[13] = loadImage("resources/images/palms1.jpg");
+  pgImage[14] = loadImage("resources/images/water0.jpg");
 }
 
 function setup(){
