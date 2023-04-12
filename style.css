@@ -455,3 +455,11 @@ button.dropbtn {
 .radio-label:checked::before {
   border:#00f 1px solid;
 }
+
+#recStatus{
+  display:none;
+  margin-top:-5px;
+  padding-top:7px;
+  padding-bottom:1px;
+  background-color:red
+}

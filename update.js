@@ -5,8 +5,6 @@ function setText(val){
 function setRadius(val){
   mainTwist.radius = round(map(val, 0, 100, 10, width/2));
 
-  print(mainTwist.radius);
-
   mainTwist.resetStructure();
 }
 
@@ -18,8 +16,6 @@ function setSlope(val){
 
 function setStrip(val){
   mainTwist.stripH = round(map(val, 0, 100, 0, mainTwist.radius * 2));
-
-  print(mainTwist.stripH);
 
   mainTwist.resetStructure();
 }
@@ -134,10 +130,43 @@ function setOut(val){
   }
 }
 
+function setSpin(val){
+  spin = map(val, 0, 20, -0.1, 0.1);
+}
+
 function setRotX(val){
   rotXcamera = map(val, 0, 100, -PI/2, PI/2);
 }
 
 function setRotZ(val){
   rotZcamera = map(val, 0, 100, -PI/2, PI/2);
+}
+
+function setRotY(val){
+  rotYcamera = map(val, 0, 100, -PI, PI);
+}
+
+function hideWidget(){
+  widgetOn = !widgetOn;
+
+  if(widgetOn){
+    document.getElementById('widget').style.display = "block";
+  } else {
+    document.getElementById('widget').style.display = "none";
+  }
+}
+
+function sizeSaveChange(val){
+  saveMode = val;
+  resizeForPreview();
+}
+
+function toggleRecMessage(){
+  recMessageOn = !recMessageOn;
+
+  if(recMessageOn){
+    document.getElementById('recStatus').style.display = "block";
+  } else {
+    document.getElementById('recStatus').style.display = "none";
+  }
 }

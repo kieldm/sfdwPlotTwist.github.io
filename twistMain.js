@@ -1,6 +1,6 @@
 class TwistMain {  
   constructor(){
-    this.res = 50;
+    this.res = 80;
     this.twists = 5;
 
     this.radius = 300;
@@ -115,9 +115,15 @@ class TwistMain {
               
               var u = 0; var vTop = 0; var vBot = 0;
               if(textureOn){
-                u = map(x, centerU, centerU + currentTexture.width, 0, 1);
-                vTop = map(yTop + m * this.res * this.slope, centerV, centerV + currentTexture.height, 0, 1);
-                vBot = map(yBot + m * this.res * this.slope, centerV, centerV + currentTexture.height, 0, 1);
+                var xU = cos(n * this.ang - spinCore) * (this.radius - this.stripH/2 + p * this.stripH);
+
+                u = map(xU, centerU, centerU + currentTexture.width, 0, 1);
+
+                var yTopV = yTop + m * this.res * this.slope;
+                var yBotV = yBot + m * this.res * this.slope;
+
+                vTop = map(yTopV, centerV, centerV + currentTexture.height, 0, 1);
+                vBot = map(yBotV, centerV, centerV + currentTexture.height, 0, 1);
               } 
 
               vertex(x, yTop, z, u, vTop);

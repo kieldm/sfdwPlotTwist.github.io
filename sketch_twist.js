@@ -20,9 +20,26 @@ var inMode = 0;
 var outMode = 1;
 
 var mainTwist;
+var spinCore = 0;
+var spin = 0;
 
 var rotXcamera = 0;
 var rotZcamera = 0;
+var rotYcamera = 0;
+
+var widgetOn = true;
+var thisDensity = 1;
+let cwidth, cheight;
+let saveMode = 0;
+
+const frate = 30;
+var numFrames = 100;
+let recording = false;
+let recordedFrames = 0;
+
+let recMessageOn = false;
+
+let sizeScale = 1;
 
 function preload(){
   // tFont[0] = loadFont("resources/NeueMontreal-LightItalic.otf");
@@ -46,7 +63,9 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(windowWidth,windowWidth,WEBGL);
+  createCanvas(windowWidth,windowHeight,WEBGL);
+
+  thisDensity = pixelDensity();
 
   colorA[0] = color('#000000');
   colorA[1] = color('#FFFFFF');
@@ -67,6 +86,7 @@ function setup(){
   pgBot = pgImage[0];
 
   noSmooth();
+  frameRate(frate);
   textureMode(NORMAL);
 
   mainTwist = new TwistMain();
@@ -83,13 +103,65 @@ function draw(){
   // orbitControl();
   
   push();
+    scale(sizeScale);
+
     rotateX(rotXcamera);
     rotateZ(rotZcamera);
+    rotateY(rotYcamera);
+
+    rotateY(spinCore);
+
     mainTwist.update();
     mainTwist.display();
   pop();
+
+  runRecording();
+
+  spinCore += spin;
 }
 
 function windowResized(){
-  resizeCanvas(windowWidth, windowWidth,WEBGL);
+  resizeCanvas(windowWidth, windowHeight,WEBGL);
+}
+
+function resizeForSave(){
+  if(saveMode == 0){
+    resizeCanvas(windowWidth, windowHeight,WEBGL);
+    sizeScale = 1;
+  } else if(saveMode == 1){
+    resizeCanvas(1080, 1920, WEBGL);
+    sizeScale = width/cwidth;
+  } else if(saveMode == 2){
+    resizeCanvas(1080, 1080, WEBGL);
+    sizeScale = width/cwidth;
+  }
+}
+
+function resizeForPreview(){
+  var tempWidth, tempHeight;
+
+  if(saveMode == 0){
+    resizeCanvas(windowWidth, windowHeight,WEBGL);
+  } else if(saveMode == 1){
+    if(windowWidth > windowHeight * 9/16){
+      tempHeight = windowHeight;
+      tempWidth = windowHeight * 9/16;
+    } else {
+      tempWidth = windowWidth;
+      tempHeight = windowWidth * 16/9;
+    }
+    resizeCanvas(tempWidth, tempHeight, WEBGL);
+  } else if(saveMode == 2){
+    if(windowWidth < windowHeight){
+      tempWidth = windowWidth;
+      tempHeight = windowWidth;
+    } else {
+      tempHeight = windowHeight;
+      tempWidth = windowHeight;
+    }
+    resizeCanvas(tempWidth, tempHeight, WEBGL);
+  }
+
+  cwidth = width;
+  cheight = height;
 }

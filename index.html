@@ -4,8 +4,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SFDW PlotTwist</title>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script> -->
-  <script src="libraries/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <script src="https://unpkg.com/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"></script>
+  <!-- <script src="libraries/p5.js"></script> -->
 
   <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -14,6 +15,8 @@
   <script src="update.js" type="text/javascript"></script>
   <script src="textures.js" type="text/javascript"></script>
   <script src="twistMain.js" type="text/javascript"></script>
+
+  <script src="recording.js" type="text/javascript"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
@@ -29,279 +32,293 @@
     <img id="outOutput"/>
   </div>
 
-  <div id="generatorInput">
-    <div class="titleh2">
-      <h2>SFDW Plot Twist</h2>
-    </div>
+  <div id="widget">
+    <div id="generatorInput">
+      <div class="titleh2">
+        <h2>SFDW Plot Twist</h2>
+      </div>
 
-    <button type="button" class="collapsible"><h1>THE TWIST</h1></button>
-    <div class="content">
-      <div class="coupling1" id="radiusTwist">
-        <div class="coupling_label"><h3>RADIUS</h3></div>
-        <input type="range" min="0" max="100" value="50" id="radiusSlider" oninput="setRadius(this.value)">
+      <button type="button" class="collapsible"><h1>THE TWIST</h1></button>
+      <div class="content">
+        <div class="coupling1" id="radiusTwist">
+          <div class="coupling_label"><h3>RADIUS</h3></div>
+          <input type="range" min="0" max="100" value="50" id="radiusSlider" oninput="setRadius(this.value)">
+        </div>
+        <div class="coupling1" id="slopeTwist">
+          <div class="coupling_label"><h3>SLOPE</h3></div>
+          <input type="range" min="0" max="100" value="15" id="slopeSlider" oninput="setSlope(this.value)">
+        </div>
+        <div class="coupling1" id="stripTwist">
+          <div class="coupling_label"><h3>STRIP</h3></div>
+          <input type="range" min="0" max="100" value="50" id="stripSlider" oninput="setStrip(this.value)">
+        </div>
       </div>
-      <div class="coupling1" id="slopeTwist">
-        <div class="coupling_label"><h3>SLOPE</h3></div>
-        <input type="range" min="0" max="100" value="15" id="slopeSlider" oninput="setSlope(this.value)">
-      </div>
-      <div class="coupling1" id="stripTwist">
-        <div class="coupling_label"><h3>STRIP</h3></div>
-        <input type="range" min="0" max="100" value="50" id="stripSlider" oninput="setStrip(this.value)">
-      </div>
-    </div>
 
-    <button type="button" class="collapsible"><h1>SIDES</h1></button>
-    <div class="content">
-      <div class="coupling2">
-        <h4>TOP</h4>
-        <div class="textureEdit">
-          <select name="topChange" id="topChange" onchange="setTop(this.value)">
-            <option value="0" selected="selected">Color</option>
-            <option value="1">Photo</option>
-            <option value="2">Upload</option>
-          </select>
-          <div class="radio-group" id="radio-top">
-            <label class="radio-label rad0">
-              <input type="radio" name="color" onclick="setColorTop(0)">
-            </label>
-            <label class="radio-label rad1">
-              <input type="radio" name="color" onclick="setColorTop(1)">
-            </label>
-            <label class="radio-label rad2">
-              <input type="radio" name="color" onclick="setColorTop(2)">
-            </label>
-            <label class="radio-label rad3">
-              <input type="radio" name="color" onclick="setColorTop(3)">
-            </label>
-            <label class="radio-label rad4">
-              <input type="radio" name="color" onclick="setColorTop(4)">
-            </label>
-            <label class="radio-label rad5">
-              <input type="radio" name="color" onclick="setColorTop(5)">
-            </label>
-            <label class="radio-label rad6">
-              <input type="radio" name="color" onclick="setColorTop(6)">
-            </label>
-          </div>
-          <div class="photo-group" id="photo-top">
-            <select class="photoSelect" name="photoSelect" id="photoTopChange" onchange="setPhoto(0, this.value)">
-              <option value="0" selected="selected">Flower 1</option>
-              <option value="1">Flower 2</option>
-              <option value="2">Flower 3</option>
-              <option value="3">Flower 4</option>
-              <option value="4">Flower 5</option>
-              <option value="5">Flower 6</option>
-              <option value="6">City 1</option>
-              <option value="7">City 2</option>
-              <option value="8">City 3</option>
-              <option value="9">City 4</option>
-              <option value="10">Evening 1</option>
-              <option value="11">Evening 2</option>
-              <option value="12">Palms 1</option>
-              <option value="13">Palms 2</option>
-              <option value="14">Water</option>
+      <button type="button" class="collapsible"><h1>SIDES</h1></button>
+      <div class="content">
+        <div class="coupling2">
+          <h4>TOP</h4>
+          <div class="textureEdit">
+            <select name="topChange" id="topChange" onchange="setTop(this.value)">
+              <option value="0" selected="selected">Color</option>
+              <option value="1">Photo</option>
+              <option value="2">Upload</option>
             </select>
+            <div class="radio-group" id="radio-top">
+              <label class="radio-label rad0">
+                <input type="radio" name="color" onclick="setColorTop(0)">
+              </label>
+              <label class="radio-label rad1">
+                <input type="radio" name="color" onclick="setColorTop(1)">
+              </label>
+              <label class="radio-label rad2">
+                <input type="radio" name="color" onclick="setColorTop(2)">
+              </label>
+              <label class="radio-label rad3">
+                <input type="radio" name="color" onclick="setColorTop(3)">
+              </label>
+              <label class="radio-label rad4">
+                <input type="radio" name="color" onclick="setColorTop(4)">
+              </label>
+              <label class="radio-label rad5">
+                <input type="radio" name="color" onclick="setColorTop(5)">
+              </label>
+              <label class="radio-label rad6">
+                <input type="radio" name="color" onclick="setColorTop(6)">
+              </label>
+            </div>
+            <div class="photo-group" id="photo-top">
+              <select class="photoSelect" name="photoSelect" id="photoTopChange" onchange="setPhoto(0, this.value)">
+                <option value="0" selected="selected">Flower 1</option>
+                <option value="1">Flower 2</option>
+                <option value="2">Flower 3</option>
+                <option value="3">Flower 4</option>
+                <option value="4">Flower 5</option>
+                <option value="5">Flower 6</option>
+                <option value="6">City 1</option>
+                <option value="7">City 2</option>
+                <option value="8">City 3</option>
+                <option value="9">City 4</option>
+                <option value="10">Evening 1</option>
+                <option value="11">Evening 2</option>
+                <option value="12">Palms 1</option>
+                <option value="13">Palms 2</option>
+                <option value="14">Water</option>
+              </select>
+            </div>
+            <div class="upload-group" id="upload-top">
+              <input type="file" accept="image/*" name="image0" id="file" class="image0" onchange="setUpload(0, event)">
+            </div>
           </div>
-          <div class="upload-group" id="upload-top">
-            <input type="file" accept="image/*" name="image0" id="file" class="image0" onchange="setUpload(0, event)">
-          </div>
-        </div>
-        <h4>BOTTOM</h4>
-        <div class="textureEdit">
-          <select name="topChange" id="topChange" onchange="setBot(this.value)">
-            <option value="0" selected="selected">Color</option>
-            <option value="1">Photo</option>
-            <option value="2">Upload</option>
-          </select>
-          <div class="radio-group" id="radio-bot">
-            <label class="radio-label rad0">
-              <input type="radio" name="color" onclick="setColorBot(0)">
-            </label>
-            <label class="radio-label rad1">
-              <input type="radio" name="color" onclick="setColorBot(1)">
-            </label>
-            <label class="radio-label rad2">
-              <input type="radio" name="color" onclick="setColorBot(2)">
-            </label>
-            <label class="radio-label rad3">
-              <input type="radio" name="color" onclick="setColorBot(3)">
-            </label>
-            <label class="radio-label rad4">
-              <input type="radio" name="color" onclick="setColorBot(4)">
-            </label>
-            <label class="radio-label rad5">
-              <input type="radio" name="color" onclick="setColorBot(5)">
-            </label>
-            <label class="radio-label rad6">
-              <input type="radio" name="color" onclick="setColorBot(6)">
-            </label>
-          </div>
-          <div class="photo-group" id="photo-bot">
-            <select class="photoSelect" name="photoSelect" id="photoBotChange" onchange="setPhoto(1, this.value)">
-              <option value="0" selected="selected">Flower 1</option>
-              <option value="1">Flower 2</option>
-              <option value="2">Flower 3</option>
-              <option value="3">Flower 4</option>
-              <option value="4">Flower 5</option>
-              <option value="5">Flower 6</option>
-              <option value="6">City 1</option>
-              <option value="7">City 2</option>
-              <option value="8">City 3</option>
-              <option value="9">City 4</option>
-              <option value="10">Evening 1</option>
-              <option value="11">Evening 2</option>
-              <option value="12">Palms 1</option>
-              <option value="13">Palms 2</option>
-              <option value="14">Water</option>
+          <h4>BOTTOM</h4>
+          <div class="textureEdit">
+            <select name="topChange" id="topChange" onchange="setBot(this.value)">
+              <option value="0" selected="selected">Color</option>
+              <option value="1">Photo</option>
+              <option value="2">Upload</option>
             </select>
+            <div class="radio-group" id="radio-bot">
+              <label class="radio-label rad0">
+                <input type="radio" name="color" onclick="setColorBot(0)">
+              </label>
+              <label class="radio-label rad1">
+                <input type="radio" name="color" onclick="setColorBot(1)">
+              </label>
+              <label class="radio-label rad2">
+                <input type="radio" name="color" onclick="setColorBot(2)">
+              </label>
+              <label class="radio-label rad3">
+                <input type="radio" name="color" onclick="setColorBot(3)">
+              </label>
+              <label class="radio-label rad4">
+                <input type="radio" name="color" onclick="setColorBot(4)">
+              </label>
+              <label class="radio-label rad5">
+                <input type="radio" name="color" onclick="setColorBot(5)">
+              </label>
+              <label class="radio-label rad6">
+                <input type="radio" name="color" onclick="setColorBot(6)">
+              </label>
+            </div>
+            <div class="photo-group" id="photo-bot">
+              <select class="photoSelect" name="photoSelect" id="photoBotChange" onchange="setPhoto(1, this.value)">
+                <option value="0" selected="selected">Flower 1</option>
+                <option value="1">Flower 2</option>
+                <option value="2">Flower 3</option>
+                <option value="3">Flower 4</option>
+                <option value="4">Flower 5</option>
+                <option value="5">Flower 6</option>
+                <option value="6">City 1</option>
+                <option value="7">City 2</option>
+                <option value="8">City 3</option>
+                <option value="9">City 4</option>
+                <option value="10">Evening 1</option>
+                <option value="11">Evening 2</option>
+                <option value="12">Palms 1</option>
+                <option value="13">Palms 2</option>
+                <option value="14">Water</option>
+              </select>
+            </div>
+            <div class="upload-group" id="upload-bot">
+              <input type="file" accept="image/*" name="image1" id="file" class="image0" onchange="setUpload(1, event)">
+            </div>
           </div>
-          <div class="upload-group" id="upload-bot">
-            <input type="file" accept="image/*" name="image1" id="file" class="image0" onchange="setUpload(1, event)">
-          </div>
-        </div>
-        <h4>INSIDE</h4>
-        <div class="textureEdit">
-          <select name="topChange" id="topChange" onchange="setIn(this.value)">
-            <option value="0" selected="selected">Color</option>
-            <option value="1">Photo</option>
-            <option value="2">Upload</option>
-          </select>
-          <div class="radio-group" id="radio-in">
-            <label class="radio-label rad0">
-              <input type="radio" name="color" onclick="setColorIn(0)">
-            </label>
-            <label class="radio-label rad1">
-              <input type="radio" name="color" onclick="setColorIn(1)">
-            </label>
-            <label class="radio-label rad2">
-              <input type="radio" name="color" onclick="setColorIn(2)">
-            </label>
-            <label class="radio-label rad3">
-              <input type="radio" name="color" onclick="setColorIn(3)">
-            </label>
-            <label class="radio-label rad4">
-              <input type="radio" name="color" onclick="setColorIn(4)">
-            </label>
-            <label class="radio-label rad5">
-              <input type="radio" name="color" onclick="setColorIn(5)">
-            </label>
-            <label class="radio-label rad6">
-              <input type="radio" name="color" onclick="setColorIn(6)">
-            </label>
-          </div>
-          <div class="photo-group" id="photo-in">
-            <select class="photoSelect" name="photoSelect" id="photoInChange" onchange="setPhoto(2, this.value)">
-              <option value="0" selected="selected">Flower 1</option>
-              <option value="1">Flower 2</option>
-              <option value="2">Flower 3</option>
-              <option value="3">Flower 4</option>
-              <option value="4">Flower 5</option>
-              <option value="5">Flower 6</option>
-              <option value="6">City 1</option>
-              <option value="7">City 2</option>
-              <option value="8">City 3</option>
-              <option value="9">City 4</option>
-              <option value="10">Evening 1</option>
-              <option value="11">Evening 2</option>
-              <option value="12">Palms 1</option>
-              <option value="13">Palms 2</option>
-              <option value="14">Water</option>
+          <h4>INSIDE</h4>
+          <div class="textureEdit">
+            <select name="topChange" id="topChange" onchange="setIn(this.value)">
+              <option value="0" selected="selected">Color</option>
+              <option value="1">Photo</option>
+              <option value="2">Upload</option>
             </select>
+            <div class="radio-group" id="radio-in">
+              <label class="radio-label rad0">
+                <input type="radio" name="color" onclick="setColorIn(0)">
+              </label>
+              <label class="radio-label rad1">
+                <input type="radio" name="color" onclick="setColorIn(1)">
+              </label>
+              <label class="radio-label rad2">
+                <input type="radio" name="color" onclick="setColorIn(2)">
+              </label>
+              <label class="radio-label rad3">
+                <input type="radio" name="color" onclick="setColorIn(3)">
+              </label>
+              <label class="radio-label rad4">
+                <input type="radio" name="color" onclick="setColorIn(4)">
+              </label>
+              <label class="radio-label rad5">
+                <input type="radio" name="color" onclick="setColorIn(5)">
+              </label>
+              <label class="radio-label rad6">
+                <input type="radio" name="color" onclick="setColorIn(6)">
+              </label>
+            </div>
+            <div class="photo-group" id="photo-in">
+              <select class="photoSelect" name="photoSelect" id="photoInChange" onchange="setPhoto(2, this.value)">
+                <option value="0" selected="selected">Flower 1</option>
+                <option value="1">Flower 2</option>
+                <option value="2">Flower 3</option>
+                <option value="3">Flower 4</option>
+                <option value="4">Flower 5</option>
+                <option value="5">Flower 6</option>
+                <option value="6">City 1</option>
+                <option value="7">City 2</option>
+                <option value="8">City 3</option>
+                <option value="9">City 4</option>
+                <option value="10">Evening 1</option>
+                <option value="11">Evening 2</option>
+                <option value="12">Palms 1</option>
+                <option value="13">Palms 2</option>
+                <option value="14">Water</option>
+              </select>
+            </div>
+            <div class="upload-group" id="upload-in">
+              <input type="file" accept="image/*" name="image2" id="file" class="image0" onchange="setUpload(2, event)">
+            </div>
           </div>
-          <div class="upload-group" id="upload-in">
-            <input type="file" accept="image/*" name="image2" id="file" class="image0" onchange="setUpload(2, event)">
-          </div>
-        </div>
-        <h4>OUTSIDE</h4>
-        <div class="textureEdit">
-          <select name="topChange" id="topChange" onchange="setOut(this.value)">
-            <option value="0">Color</option>
-            <option value="1"selected="selected">Photo</option>
-            <option value="2">Upload</option>
-          </select>
-          <div class="radio-group" id="radio-out">
-            <label class="radio-label rad0">
-              <input type="radio" name="color" onclick="setColorOut(0)">
-            </label>
-            <label class="radio-label rad1">
-              <input type="radio" name="color" onclick="setColorOut(1)">
-            </label>
-            <label class="radio-label rad2">
-              <input type="radio" name="color" onclick="setColorOut(2)">
-            </label>
-            <label class="radio-label rad3">
-              <input type="radio" name="color" onclick="setColorOut(3)">
-            </label>
-            <label class="radio-label rad4">
-              <input type="radio" name="color" onclick="setColorOut(4)">
-            </label>
-            <label class="radio-label rad5">
-              <input type="radio" name="color" onclick="setColorOut(5)">
-            </label>
-            <label class="radio-label rad6">
-              <input type="radio" name="color" onclick="setColorOut(6)">
-            </label>
-          </div>
-          <div class="photo-group" id="photo-out">
-            <select class="photoSelect" name="photoSelect" id="photoOutChange" onchange="setPhoto(3, this.value)">
-              <option value="0" selected="selected">Flower 1</option>
-              <option value="1">Flower 2</option>
-              <option value="2">Flower 3</option>
-              <option value="3">Flower 4</option>
-              <option value="4">Flower 5</option>
-              <option value="5">Flower 6</option>
-              <option value="6">City 1</option>
-              <option value="7">City 2</option>
-              <option value="8">City 3</option>
-              <option value="9">City 4</option>
-              <option value="10">Evening 1</option>
-              <option value="11">Evening 2</option>
-              <option value="12">Palms 1</option>
-              <option value="13">Palms 2</option>
-              <option value="14">Water</option>
+          <h4>OUTSIDE</h4>
+          <div class="textureEdit">
+            <select name="topChange" id="topChange" onchange="setOut(this.value)">
+              <option value="0">Color</option>
+              <option value="1"selected="selected">Photo</option>
+              <option value="2">Upload</option>
             </select>
-          </div>
-          <div class="upload-group" id="upload-out">
-            <input type="file" accept="image/*" name="image3" id="file" class="image0" onchange="setUpload(3, event)">
+            <div class="radio-group" id="radio-out">
+              <label class="radio-label rad0">
+                <input type="radio" name="color" onclick="setColorOut(0)">
+              </label>
+              <label class="radio-label rad1">
+                <input type="radio" name="color" onclick="setColorOut(1)">
+              </label>
+              <label class="radio-label rad2">
+                <input type="radio" name="color" onclick="setColorOut(2)">
+              </label>
+              <label class="radio-label rad3">
+                <input type="radio" name="color" onclick="setColorOut(3)">
+              </label>
+              <label class="radio-label rad4">
+                <input type="radio" name="color" onclick="setColorOut(4)">
+              </label>
+              <label class="radio-label rad5">
+                <input type="radio" name="color" onclick="setColorOut(5)">
+              </label>
+              <label class="radio-label rad6">
+                <input type="radio" name="color" onclick="setColorOut(6)">
+              </label>
+            </div>
+            <div class="photo-group" id="photo-out">
+              <select class="photoSelect" name="photoSelect" id="photoOutChange" onchange="setPhoto(3, this.value)">
+                <option value="0" selected="selected">Flower 1</option>
+                <option value="1">Flower 2</option>
+                <option value="2">Flower 3</option>
+                <option value="3">Flower 4</option>
+                <option value="4">Flower 5</option>
+                <option value="5">Flower 6</option>
+                <option value="6">City 1</option>
+                <option value="7">City 2</option>
+                <option value="8">City 3</option>
+                <option value="9">City 4</option>
+                <option value="10">Evening 1</option>
+                <option value="11">Evening 2</option>
+                <option value="12">Palms 1</option>
+                <option value="13">Palms 2</option>
+                <option value="14">Water</option>
+              </select>
+            </div>
+            <div class="upload-group" id="upload-out">
+              <input type="file" accept="image/*" name="image3" id="file" class="image0" onchange="setUpload(3, event)">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <button type="button" class="collapsible"><h1>CAMERA</h1></button>
-    <div class="content">
-      <div class="coupling1" id="rotXcamera">
-        <div class="coupling_label"><h3>ROTATE X</h3></div>
-        <input type="range" min="0" max="100" value="50" id="rotXslider" oninput="setRotX(this.value)">
+      <button type="button" class="collapsible"><h1>MOTION</h1></button>
+      <div class="content">
+        <div class="coupling1" id="radiusTwist">
+          <div class="coupling_label"><h3>Spin</h3></div>
+          <input type="range" min="0" max="20" value="10" id="spinSlider" oninput="setSpin(this.value)">
+        </div>
       </div>
-      <div class="coupling1" id="rotYcamera">
-        <div class="coupling_label"><h3>ROTATE Z</h3></div>
-        <input type="range" min="0" max="100" value="50" id="rotZslider" oninput="setRotZ(this.value)">
-      </div>
-    </div>
 
-    <button type="button" class="collapsible"><h1>SAVE</h1></button>
-    <div class="content">
-      <div class="coupling2">
-        <div class="couplingEntry">
-          <input type="radio" id="window" name="saveSize" value=0 onclick="sizeSaveChange(this.value)" checked>
-          <label for="window">Window Size</label>
+      <button type="button" class="collapsible"><h1>CAMERA</h1></button>
+      <div class="content">
+        <div class="coupling1" id="rotXcamera">
+          <div class="coupling_label"><h3>ROTATE X</h3></div>
+          <input type="range" min="0" max="100" value="50" id="rotXslider" oninput="setRotX(this.value)">
         </div>
-        <div class="couplingEntry">
-          <input type="radio" id="vert" name="saveSize" value=1 onclick="sizeSaveChange(this.value)">
-          <label for="vert">Vertical, 9:16</label>
+        <div class="coupling1" id="rotZcamera">
+          <div class="coupling_label"><h3>ROTATE Z</h3></div>
+          <input type="range" min="0" max="100" value="50" id="rotZslider" oninput="setRotZ(this.value)">
         </div>
-        <div class="couplingEntry">
-          <input type="radio" id="squa" name="saveSize" value=2 onclick="sizeSaveChange(this.value)">
-          <label for="squa">Square, 1:1</label>
+        <div class="coupling1" id="rotYcamera">
+          <div class="coupling_label"><h3>ROTATE Y</h3></div>
+          <input type="range" min="0" max="100" value="50" id="rotYslider" oninput="setRotY(this.value)">
         </div>
       </div>
-      <!-- <div class="module">
-        <button type="button" class="saveButton" onclick="runSave()">SAVE LOOP</button>
+
+      <button type="button" class="collapsible"><h1>SAVE</h1></button>
+      <div class="content">
+        <div class="coupling2">
+          <div class="couplingEntry">
+            <input type="radio" id="window" name="saveSize" value=0 onclick="sizeSaveChange(this.value)" checked>
+            <label for="window">Window Size</label>
+          </div>
+          <div class="couplingEntry">
+            <input type="radio" id="vert" name="saveSize" value=1 onclick="sizeSaveChange(this.value)">
+            <label for="vert">Vertical, 9:16</label>
+          </div>
+          <div class="couplingEntry">
+            <input type="radio" id="squa" name="saveSize" value=2 onclick="sizeSaveChange(this.value)">
+            <label for="squa">Square, 1:1</label>
+          </div>
+        </div>
+        <div class="module">
+          <button type="button" class="saveButton" onclick="runSave()">SAVE LOOP</button>
+        </div>
+        <div id="recStatus">
+          <p>RECORDING IN PROCESS <br>(preview not accurate)</p>
+        </div>
       </div>
-      <div id="recStatus">
-        <p>RECORDING IN PROCESS <br>(preview not accurate)</p>
-      </div> -->
     </div>
   </div>
 
