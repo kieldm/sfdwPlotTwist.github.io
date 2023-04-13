@@ -65,10 +65,16 @@ class TwistMain {
               
               var uIn = 0; var uOut = 0; var vIn = 0; var vOut = 0;
               if(textureOn){
-                uIn = map(xIn, centerU, centerU + currentTexture.width, 0, 1);
-                uOut = map(xOut, centerU, centerU + currentTexture.width, 0, 1);
-                vIn = map(zIn, centerV, centerV + currentTexture.height, 0, 1);
-                vOut = map(zOut, centerV, centerV + currentTexture.height, 0, 1);
+                var xInU = cos(n * this.ang - spinCore) * (this.radius - this.stripH/2);
+                var zInV = sin(n * this.ang - spinCore) * (this.radius - this.stripH/2);
+  
+                var xOutU = cos(n * this.ang - spinCore) * (this.radius + this.stripH/2);
+                var zOutV = sin(n * this.ang - spinCore) * (this.radius + this.stripH/2);
+
+                uIn = map(xInU, centerU, centerU + currentTexture.width, 0, 1);
+                uOut = map(xOutU, centerU, centerU + currentTexture.width, 0, 1);
+                vIn = map(zInV, centerV, centerV + currentTexture.height, 0, 1);
+                vOut = map(zOutV, centerV, centerV + currentTexture.height, 0, 1);
               }
               
               vertex(xIn, y, zIn, uIn, vIn);

@@ -3,7 +3,7 @@ function setText(val){
 }
 
 function setRadius(val){
-  mainTwist.radius = round(map(val, 0, 100, 10, width/2));
+  mainTwist.radius = round(map(val, 0, 100, 10, width));
 
   mainTwist.resetStructure();
 }
@@ -54,12 +54,6 @@ function setUpload(section, val){
     image3.src = URL.createObjectURL(event.target.files[0]);
     pgOut = loadImage(image3.src);
   }
-}
-
-var loadFile0 = function(event) {
-  var image0 = document.getElementById('topOutput');
-  image0.src = URL.createObjectURL(event.target.files[0]);
-  pgImage = loadImage(image0.src);
 }
 
 function setTop(val){

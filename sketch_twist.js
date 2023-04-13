@@ -45,21 +45,22 @@ function preload(){
   // tFont[0] = loadFont("resources/NeueMontreal-LightItalic.otf");
   tFont[0] = loadFont("resources/Linotype - Neue Haas Grotesk Text Std 55 Roman.ttf");
 
-  pgImage[0] = loadImage("resources/images/flower0.jpg");
-  pgImage[1] = loadImage("resources/images/flower1.jpg");
-  pgImage[2] = loadImage("resources/images/flower2.jpg");
-  pgImage[3] = loadImage("resources/images/flower3.jpg");
-  pgImage[4] = loadImage("resources/images/flower4.jpg");
-  pgImage[5] = loadImage("resources/images/flower5.jpg");
-  pgImage[6] = loadImage("resources/images/city0.jpg");
-  pgImage[7] = loadImage("resources/images/city1.jpg");
-  pgImage[8] = loadImage("resources/images/city2.jpg");
-  pgImage[9] = loadImage("resources/images/city3.jpg");
-  pgImage[10] = loadImage("resources/images/evening0.jpg");
-  pgImage[11] = loadImage("resources/images/evening1.jpg");
-  pgImage[12] = loadImage("resources/images/palms0.jpg");
-  pgImage[13] = loadImage("resources/images/palms1.jpg");
-  pgImage[14] = loadImage("resources/images/water0.jpg");
+  pgImage[0] = loadImage("resources/images2/flower0.jpg");
+  pgImage[1] = loadImage("resources/images2/flower1.jpg");
+  pgImage[2] = loadImage("resources/images2/flower2.jpg");
+  pgImage[3] = loadImage("resources/images2/flower3.jpg");
+  pgImage[4] = loadImage("resources/images2/flower4.jpg");
+  pgImage[5] = loadImage("resources/images2/flower5.jpg");
+  pgImage[6] = loadImage("resources/images2/city0.jpg");
+  pgImage[7] = loadImage("resources/images2/city1.jpg");
+  pgImage[8] = loadImage("resources/images2/city2.jpg");
+  pgImage[9] = loadImage("resources/images2/city3.jpg");
+  pgImage[10] = loadImage("resources/images2/evening0.jpg");
+  pgImage[11] = loadImage("resources/images2/evening1.jpg");
+  pgImage[12] = loadImage("resources/images2/palms0.jpg");
+  pgImage[13] = loadImage("resources/images2/palms1.jpg");
+  pgImage[14] = loadImage("resources/images2/water0.jpg");
+  pgImage[15] = loadImage("resources/images2/clouds0.gif");
 }
 
 function setup(){
@@ -88,6 +89,8 @@ function setup(){
   noSmooth();
   frameRate(frate);
   textureMode(NORMAL);
+  // textureWrap(REPEAT);
+  textureWrap(MIRROR);
 
   mainTwist = new TwistMain();
 
@@ -103,6 +106,7 @@ function draw(){
   // orbitControl();
   
   push();
+    // scale(0.25);
     scale(sizeScale);
 
     rotateX(rotXcamera);
