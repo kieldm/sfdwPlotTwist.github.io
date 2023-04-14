@@ -10,9 +10,6 @@ function runRecording(){
     ctx.drawImage(canvas,0,0)
     encoder.addFrameRgba(ctx.getImageData(0, 0, encoder.width, encoder.height).data)
 
-    // 2D Renderer
-    // encoder.addFrameRgba(drawingContext.getImageData(0, 0, encoder.width, encoder.height).data);
-
     recordedFrames++
   }
   // finalize encoding and export as mp4
@@ -41,11 +38,6 @@ function runSave(){
 
   numFrames = 60;
   recording = true;
-  coreCounter = 0;
-  selector = 0;
-
-  setText();
-  // pickScene();
 
   toggleRecMessage();
 }

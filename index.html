@@ -5,7 +5,8 @@
   <title>SFDW PlotTwist</title>
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script> -->
   
   <script src="https://unpkg.com/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"></script>
   <!-- <script src="libraries/p5.js"></script> -->
@@ -52,7 +53,7 @@
         </div>
         <div class="coupling1" id="stripTwist">
           <div class="coupling_label"><h3>STRIP</h3></div>
-          <input type="range" min="0" max="100" value="50" id="stripSlider" oninput="setStrip(this.value)">
+          <input type="range" min="0" max="100" value="30" id="stripSlider" oninput="setStrip(this.value)">
         </div>
       </div>
 
@@ -253,7 +254,7 @@
             </div>
             <div class="photo-group" id="photo-out">
               <select class="photoSelect" name="photoSelect" id="photoOutChange" onchange="setPhoto(3, this.value)">
-                <option value="0" selected="selected">Flower 1</option>
+                <option value="0">Flower 1</option>
                 <option value="1">Flower 2</option>
                 <option value="2">Flower 3</option>
                 <option value="3">Flower 4</option>
@@ -268,7 +269,7 @@
                 <option value="12">Palms 1</option>
                 <option value="13">Palms 2</option>
                 <option value="14">Water</option>
-                <option value="15">Clouds</option>
+                <option value="15" selected="selected">Clouds</option>
               </select>
             </div>
             <div class="upload-group" id="upload-out">

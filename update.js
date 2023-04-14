@@ -1,24 +1,15 @@
-function setText(val){
-  keyText = val;
-}
-
 function setRadius(val){
   mainTwist.radius = round(map(val, 0, 100, 10, width));
-
-  mainTwist.resetStructure();
 }
 
 function setSlope(val){
-  mainTwist.slope = round(map(val, 0, 100, mainTwist.stripH/mainTwist.res, 10 * mainTwist.stripH/mainTwist.res));
-
-  mainTwist.resetStructure();
+  mainTwist.slope = round(map(val, 0, 100, mainTwist.stripH/(mainTwist.res/mainTwist.twists), 10 * mainTwist.stripH/(mainTwist.res/mainTwist.twists)));
 }
 
 function setStrip(val){
   mainTwist.stripH = round(map(val, 0, 100, 0, mainTwist.radius * 2));
-
-  mainTwist.resetStructure();
 }
+
 function setColorTop(val){ colorTop = colorA[val]; }
 function setColorBot(val){ colorBot = colorA[val]; }
 function setColorIn(val){ colorIn = colorA[val]; }

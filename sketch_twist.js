@@ -68,6 +68,9 @@ function setup(){
 
   thisDensity = pixelDensity();
 
+
+  bkgdColor = color('#000000');
+  foreColor = color('#FFFFFF');  
   colorA[0] = color('#000000');
   colorA[1] = color('#FFFFFF');
   colorA[2] = color('#f06428');
@@ -82,7 +85,7 @@ function setup(){
   colorOut = colorA[6];
 
   pgIn = pgImage[0];
-  pgOut = pgImage[0];
+  pgOut = pgImage[15];
   pgTop = pgImage[0];
   pgBot = pgImage[0];
 
