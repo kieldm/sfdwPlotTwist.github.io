@@ -113,6 +113,24 @@
             <div class="upload-group" id="upload-top">
               <input type="file" accept="image/*" name="image0" id="file" class="image0" onchange="setUpload(0, event)">
             </div>
+            <div class="uv-group" id="uv-top">
+              <h5>Texture Settings</h5>
+              <div class="wrap-group" id="wrap-top">
+                <select class="wrapSelect" name="wrapSelect" id="wrapTopSelect" onchange="setWrap(0, this.value)">
+                  <option value="0" selected="selected">Mirror</option>
+                  <option value="1">Repeat</option>
+                  <option value="2">Clamp</option>
+                </select>
+              </div>
+              <div class="coupling1" id="positionUtop">
+                <div class="coupling_label"><h3>Horizontal</h3></div>
+                <input type="range" min="0" max="100" value="50" id="uSlider" oninput="setUoffset(0, this.value)">
+              </div>
+              <div class="coupling1" id="positionUtop">
+                <div class="coupling_label"><h3>Vertical</h3></div>
+                <input type="range" min="0" max="100" value="50" id="vSlider" oninput="setVoffset(0, this.value)">
+              </div>
+            </div>
           </div>
           <h4>BOTTOM</h4>
           <div class="textureEdit">
@@ -166,6 +184,24 @@
             </div>
             <div class="upload-group" id="upload-bot">
               <input type="file" accept="image/*" name="image1" id="file" class="image0" onchange="setUpload(1, event)">
+            </div>
+            <div class="uv-group" id="uv-bot">
+              <h5>Texture Settings</h5>
+              <div class="wrap-group" id="wrap-bot">
+                <select class="wrapSelect" name="wrapSelect" id="wrapBotSelect" onchange="setWrap(1, this.value)">
+                  <option value="0" selected="selected">Mirror</option>
+                  <option value="1">Repeat</option>
+                  <option value="2">Clamp</option>
+                </select>
+              </div>
+              <div class="coupling1" id="positionUbot">
+                <div class="coupling_label"><h3>Horizontal</h3></div>
+                <input type="range" min="0" max="100" value="50" id="uSlider" oninput="setUoffset(1, this.value)">
+              </div>
+              <div class="coupling1" id="positionUbot">
+                <div class="coupling_label"><h3>Vertical</h3></div>
+                <input type="range" min="0" max="100" value="50" id="vSlider" oninput="setVoffset(1, this.value)">
+              </div>
             </div>
           </div>
           <h4>INSIDE</h4>
@@ -221,6 +257,24 @@
             <div class="upload-group" id="upload-in">
               <input type="file" accept="image/*" name="image2" id="file" class="image0" onchange="setUpload(2, event)">
             </div>
+            <div class="uv-group" id="uv-in">
+              <h5>Texture Settings</h5>
+              <div class="wrap-group" id="wrap-in">
+                <select class="wrapSelect" name="wrapSelect" id="wrapInSelect" onchange="setWrap(2, this.value)">
+                  <option value="0" selected="selected">Mirror</option>
+                  <option value="1">Repeat</option>
+                  <option value="2">Clamp</option>
+                </select>
+              </div>
+              <div class="coupling1" id="positionUin">
+                <div class="coupling_label"><h3>Horizontal</h3></div>
+                <input type="range" min="0" max="100" value="50" id="uSlider" oninput="setUoffset(2, this.value)">
+              </div>
+              <div class="coupling1" id="positionUin">
+                <div class="coupling_label"><h3>Vertical</h3></div>
+                <input type="range" min="0" max="100" value="50" id="vSlider" oninput="setVoffset(2, this.value)">
+              </div>
+            </div>
           </div>
           <h4>OUTSIDE</h4>
           <div class="textureEdit">
@@ -274,6 +328,24 @@
             </div>
             <div class="upload-group" id="upload-out">
               <input type="file" accept="image/*" name="image3" id="file" class="image0" onchange="setUpload(3, event)">
+            </div>
+            <div class="uv-group" id="uv-out">
+              <h5>Texture Settings</h5>
+              <div class="wrap-group" id="wrap-out">
+                <select class="wrapSelect" name="wrapSelect" id="wrapOutSelect" onchange="setWrap(3, this.value)">
+                  <option value="0" selected="selected">Mirror</option>
+                  <option value="1">Repeat</option>
+                  <option value="2">Clamp</option>
+                </select>
+              </div>
+              <div class="coupling1" id="positionUout">
+                <div class="coupling_label"><h3>Horizontal</h3></div>
+                <input type="range" min="0" max="100" value="50" id="uSlider" oninput="setUoffset(3, this.value)">
+              </div>
+              <div class="coupling1" id="positionUout">
+                <div class="coupling_label"><h3>Vertical</h3></div>
+                <input type="range" min="0" max="100" value="50" id="vSlider" oninput="setVoffset(3, this.value)">
+              </div>
             </div>
           </div>
         </div>

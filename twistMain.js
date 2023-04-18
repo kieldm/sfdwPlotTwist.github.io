@@ -1,6 +1,6 @@
 class TwistMain {  
   constructor(){
-    this.res = 400;
+    this.res = 300;
 
     this.radius = 300;
     this.slope = 8;
@@ -8,23 +8,28 @@ class TwistMain {
 
     this.twists = 5;
     this.ang = (this.twists * 2 * PI)/this.res;
+
+    this.yHalf = -this.res * this.slope/2 - this.stripH/2;
   }
 
   update(){
+
   }
 
   display(){
     push();
-      translate(0, -this.res * this.slope/2);
+      translate(0, this.yHalf);
 
       ////// TOP/BOT
       // fill(bkgdColor);
       // stroke(foreColor);
       noStroke();
 
-      for(var p = 0; p < 2; p++){
+      for(var p = 0; p < 2; p++){       ///////// p == 0: Top  ///////// p == 1: Bot
         var currentTexture;
         var textureOn = false;
+        var offU = 0;
+        var offV = 0;
 
         if(p == 0 && topMode == 1){
           currentTexture = pgTop;
@@ -36,6 +41,24 @@ class TwistMain {
           currentTexture = pgBot;
         }
 
+        if(p==0) {
+          if(wrapTop == 0){
+            textureWrap(MIRROR);
+          } else if(wrapTop == 1){
+            textureWrap(REPEAT);
+          } else {
+            textureWrap(CLAMP);
+          }
+        } else if(p==1) {
+          if(wrapBot == 0){
+            textureWrap(MIRROR);
+          } else if(wrapBot == 1){
+            textureWrap(REPEAT);
+          } else {
+            textureWrap(CLAMP);
+          }
+        } 
+
         if(p == 0 && topMode == 0){
           fill(colorTop);
         } else if(p == 1 && botMode == 0){
@@ -43,6 +66,18 @@ class TwistMain {
         } else {
           texture(currentTexture);
           textureOn = true;
+        }
+
+        if(textureOn){
+          centerW = -currentTexture.width/2;
+          centerH = -currentTexture.height/2;
+          if(p==0){
+            offU = map(uOffset[0], 0, 100, -currentTexture.width, currentTexture.width);
+            offV = map(vOffset[0], 0, 100, -currentTexture.height, currentTexture.height);
+          } else if(p==1){
+            offU = map(uOffset[1], 0, 100, -currentTexture.width, currentTexture.width);
+            offV = map(vOffset[1], 0, 100, -currentTexture.height, currentTexture.height);
+          }
         }
 
         beginShape(TRIANGLE_STRIP);
@@ -63,10 +98,10 @@ class TwistMain {
             var xOutU = cos(n * this.ang - spinCore) * (this.radius + this.stripH/2);
             var zOutV = sin(n * this.ang - spinCore) * (this.radius + this.stripH/2);
 
-            uIn = map(xInU, 0, currentTexture.width, 0, 1);
-            uOut = map(xOutU, 0, currentTexture.width, 0, 1);
-            vIn = map(zInV, 0, currentTexture.height, 0, 1);
-            vOut = map(zOutV, 0, currentTexture.height, 0, 1);
+            uIn = map(xInU + offU, 0, currentTexture.width, 0, 1);
+            uOut = map(xOutU + offU, 0, currentTexture.width, 0, 1);
+            vIn = map(zInV + offV, 0, currentTexture.height, 0, 1);
+            vOut = map(zOutV + offV, 0, currentTexture.height, 0, 1);
           }
           
           vertex(xIn, y, zIn, uIn, vIn);
@@ -76,9 +111,13 @@ class TwistMain {
       }
 
       ////// IN/OUT
-      for(var p = 0; p < 2; p++){
+      for(var p = 0; p < 2; p++){       ///////// p == 0: In  ///////// p == 1: Out
         var currentTexture;
         var textureOn = false;
+        var centerW = 0;
+        var centerH = 0;
+        var offU = 0;
+        var offV = 0;
 
         if(p == 0 && inMode == 1){
           currentTexture = pgIn;
@@ -90,6 +129,24 @@ class TwistMain {
           currentTexture = pgOut;
         }
 
+        if(p==0) {
+          if(wrapIn == 0){
+            textureWrap(MIRROR);
+          } else if(wrapIn == 1){
+            textureWrap(REPEAT);
+          } else {
+            textureWrap(CLAMP);
+          }
+        } else if(p==1) {
+          if(wrapOut == 0){
+            textureWrap(MIRROR);
+          } else if(wrapOut == 1){
+            textureWrap(REPEAT);
+          } else {
+            textureWrap(CLAMP);
+          }
+        } 
+
         if(p == 0 && inMode == 0){
           fill(colorIn);
         } else if(p == 1 && outMode == 0){
@@ -97,6 +154,18 @@ class TwistMain {
         } else {
           texture(currentTexture);
           textureOn = true;
+        }
+
+        if(textureOn){
+          centerW = -currentTexture.width/2;
+          centerH = -currentTexture.height/2;
+          if(p==0){
+            offU = map(uOffset[2], 0, 100, -currentTexture.width, currentTexture.width);
+            offV = map(vOffset[2], 0, 100, -currentTexture.height, currentTexture.height);
+          } else if(p==1){
+            offU = map(uOffset[3], 0, 100, -currentTexture.width, currentTexture.width);
+            offV = map(vOffset[3], 0, 100, -currentTexture.height, currentTexture.height);
+          }
         }
 
         beginShape(TRIANGLE_STRIP);
@@ -111,13 +180,13 @@ class TwistMain {
           if(textureOn){
             var xU = cos(n * this.ang - spinCore) * (this.radius - this.stripH/2 + p * this.stripH);
 
-            u = map(xU, 0, currentTexture.width, 0, 1);
+            u = map(xU + offU, centerW, currentTexture.width + centerW, 0, 1);
 
-            var yTopV = yTop;
-            var yBotV = yBot;
+            var yTopV = yTop + this.yHalf;
+            var yBotV = yBot + this.yHalf;
 
-            vTop = map(yTopV, 0, currentTexture.height, 0, 1);
-            vBot = map(yBotV, 0, currentTexture.height, 0, 1);
+            vTop = map(yTopV + offV, centerH, currentTexture.height + centerH, 0, 1);
+            vBot = map(yBotV + offV, centerH, currentTexture.height + centerH, 0, 1);
           } 
 
           vertex(x, yTop, z, u, vTop);

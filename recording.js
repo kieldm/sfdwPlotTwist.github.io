@@ -10,6 +10,9 @@ function runRecording(){
     ctx.drawImage(canvas,0,0)
     encoder.addFrameRgba(ctx.getImageData(0, 0, encoder.width, encoder.height).data)
 
+    // 2D Renderer
+    // encoder.addFrameRgba(drawingContext.getImageData(0, 0, encoder.width, encoder.height).data);
+
     recordedFrames++
   }
   // finalize encoding and export as mp4
@@ -52,14 +55,14 @@ function setRecorder(){
 
   HME.createH264MP4Encoder().then(enc => {
       encoder = enc;
-      encoder.outputFilename = 'STG_flash';
+      encoder.outputFilename = 'SFDWplotTwist';
       encoder.pixelDensity = 2;
       encoder.drawingContext = "webgl";
       encoder.width = cwidth * 1;
       encoder.height = cheight * 1;
       encoder.frameRate = frate;
       encoder.kbps = 100000; // video quality
-      encoder.groupOfPictures = 10; // lower if you have fast actions.
+      encoder.groupOfPictures = 5; // lower if you have fast actions.
       encoder.initialize();
   })
 }

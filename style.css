@@ -133,6 +133,7 @@ h3{
 }
 h4{
   font-family:'IBM Plex Mono',monospace;
+  text-decoration: underline;
   font-size:15px;
   font-weight:500;
   text-align:left;
@@ -141,6 +142,19 @@ h4{
   margin-left:5px;
   padding-top:10px;
 }
+
+h5{
+  font-family:'IBM Plex Mono',monospace;
+  font-style: italic;
+  font-size:12px;
+  font-weight:300;
+  text-align:left;
+  color:#000;
+  margin:0;
+  margin-left:5px;
+  margin-bottom:5px;
+}
+
 .titleh2{
   background-color:#000
 }
@@ -228,12 +242,49 @@ input[type=radio]{
 #upload-in { display:none; }
 #upload-out { display:none; }
 
+#uv-top {
+  display:none;
+  flex-direction: column;
+}
+#uv-bot {
+  display:none;
+  flex-direction: column;
+}
+#uv-in {
+  display:none;
+  flex-direction: column;
+}
+#uv-out {
+  display:flex;
+  flex-direction: column;
+}
+
 select.photoSelect {
   height:30px;
   background: #f1f1f1;
   margin-top:0px;
   border: 1px solid #fff;
   /* color:red; */
+}
+
+.uv-group {
+  display:flex;
+}
+
+.wrap-group select{
+  padding:2px;
+  padding-left:0;
+  color: black;
+  display: inline-block;
+  background: rgba(#fff, #fff, #fff, 0.0);
+  border: 1px solid #fff;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 10pt;
+  margin-top:0;
 }
 
 .image0 {
@@ -257,7 +308,6 @@ select.photoSelect {
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
-  text-shadow: 1px 1px #fff;
   font-weight: 500;
   font-size: 10pt;
 }

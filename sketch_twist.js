@@ -19,6 +19,14 @@ var botMode = 0;
 var inMode = 0;
 var outMode = 1;
 
+var wrapTop = 0;
+var wrapBot = 0;
+var wrapIn = 0;
+var wrapOut = 0;
+
+var uOffset = [];
+var vOffset = [];
+
 var mainTwist;
 var spinCore = 0;
 var spin = 0;
@@ -68,7 +76,6 @@ function setup(){
 
   thisDensity = pixelDensity();
 
-
   bkgdColor = color('#000000');
   foreColor = color('#FFFFFF');  
   colorA[0] = color('#000000');
@@ -89,11 +96,17 @@ function setup(){
   pgTop = pgImage[0];
   pgBot = pgImage[0];
 
+  for(var m = 0; m < 4; m++){
+    uOffset[m] = 50;
+    vOffset[m] = 50;
+  }
+
   noSmooth();
   frameRate(frate);
   textureMode(NORMAL);
   // textureWrap(REPEAT);
   textureWrap(MIRROR);
+  // textureWrap(CLAMP);
 
   mainTwist = new TwistMain();
 
@@ -109,7 +122,6 @@ function draw(){
   // orbitControl();
   
   push();
-    // scale(0.25);
     scale(sizeScale);
 
     rotateX(rotXcamera);
@@ -128,7 +140,16 @@ function draw(){
 }
 
 function windowResized(){
-  resizeCanvas(windowWidth, windowHeight,WEBGL);
+  if(saveMode == 0){
+    resizeCanvas(windowWidth, windowHeight,WEBGL);
+    sizeScale = 1;
+  } else if(saveMode == 1){
+    resizeCanvas(1080, 1920, WEBGL);
+    sizeScale = width/cwidth;
+  } else if(saveMode == 2){
+    resizeCanvas(1080, 1080, WEBGL);
+    sizeScale = width/cwidth;
+  }
 }
 
 function resizeForSave(){

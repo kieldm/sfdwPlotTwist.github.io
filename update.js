@@ -53,14 +53,20 @@ function setTop(val){
     document.getElementById('radio-top').style.display = "flex";
     document.getElementById('photo-top').style.display = "none";
     document.getElementById('upload-top').style.display = "none";
+
+    document.getElementById('uv-top').style.display = "none";
   } else if(topMode == 1){
     document.getElementById('radio-top').style.display = "none";
     document.getElementById('photo-top').style.display = "flex";
     document.getElementById('upload-top').style.display = "none";
+
+    document.getElementById('uv-top').style.display = "flex";
   } else if(topMode == 2){
     document.getElementById('radio-top').style.display = "none";
     document.getElementById('photo-top').style.display = "none";
     document.getElementById('upload-top').style.display = "flex";
+
+    document.getElementById('uv-top').style.display = "flex";
   }
 }
 
@@ -70,14 +76,20 @@ function setBot(val){
     document.getElementById('radio-bot').style.display = "flex";
     document.getElementById('photo-bot').style.display = "none";
     document.getElementById('upload-bot').style.display = "none";
+
+    document.getElementById('uv-bot').style.display = "none";
   } else if(botMode == 1){
     document.getElementById('radio-bot').style.display = "none";
     document.getElementById('photo-bot').style.display = "flex";
     document.getElementById('upload-bot').style.display = "none";
+
+    document.getElementById('uv-bot').style.display = "flex";
   } else if(botMode == 2){
     document.getElementById('radio-bot').style.display = "none";
     document.getElementById('photo-bot').style.display = "none";
     document.getElementById('upload-bot').style.display = "flex";
+
+    document.getElementById('uv-bot').style.display = "flex";
   }
 }
 
@@ -87,14 +99,20 @@ function setIn(val){
     document.getElementById('radio-in').style.display = "flex";
     document.getElementById('photo-in').style.display = "none";
     document.getElementById('upload-in').style.display = "none";
+
+    document.getElementById('uv-in').style.display = "none";
   } else if(inMode == 1){
     document.getElementById('radio-in').style.display = "none";
     document.getElementById('photo-in').style.display = "flex";
     document.getElementById('upload-in').style.display = "none";
+
+    document.getElementById('uv-in').style.display = "flex";
   } else if(inMode == 2){
     document.getElementById('radio-in').style.display = "none";
     document.getElementById('photo-in').style.display = "none";
     document.getElementById('upload-in').style.display = "flex";
+
+    document.getElementById('uv-in').style.display = "flex";
   }
 }
 
@@ -104,14 +122,32 @@ function setOut(val){
     document.getElementById('radio-out').style.display = "flex";
     document.getElementById('photo-out').style.display = "none";
     document.getElementById('upload-out').style.display = "none";
+
+    document.getElementById('uv-out').style.display = "none";
   } else if(outMode == 1){
     document.getElementById('radio-out').style.display = "none";
     document.getElementById('photo-out').style.display = "flex";
     document.getElementById('upload-out').style.display = "none";
+
+    document.getElementById('uv-out').style.display = "flex";
   } else if(outMode == 2){
     document.getElementById('radio-out').style.display = "none";
     document.getElementById('photo-out').style.display = "none";
     document.getElementById('upload-out').style.display = "flex";
+
+    document.getElementById('uv-out').style.display = "flex";
+  }
+}
+
+function setWrap(section, val){
+  if(section == 0){
+    wrapTop = val;
+  } else if(section == 1){
+    wrapBottom = val;
+  } else if(section == 2){
+    wrapIn = val;
+  } else {
+    wrapOut = val;
   }
 }
 
@@ -129,6 +165,14 @@ function setRotZ(val){
 
 function setRotY(val){
   rotYcamera = map(val, 0, 100, -PI, PI);
+}
+
+function setUoffset(select, val){
+  uOffset[select] = val;
+}
+
+function setVoffset(select, val){
+  vOffset[select] = val;
 }
 
 function hideWidget(){
