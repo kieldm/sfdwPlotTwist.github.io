@@ -41,6 +41,35 @@
         <h2>SFDW Plot Twist</h2>
       </div>
 
+      <button type="button" class="collapsible"><h1>TEMPLATES</h1></button>
+      <div class="content">
+        <div class="coupling3">
+          <div class="couplingEntry">
+            <input type="radio" id="window" name="saveSize" value=0 onclick="sizeSaveChange(this.value)" checked>
+            <label for="window">Window Size</label>
+          </div>
+          <div class="couplingEntry">
+            <input type="radio" id="vert" name="saveSize" value=1 onclick="sizeSaveChange(this.value)">
+            <label for="vert">Vertical, 9:16</label>
+          </div>
+          <div class="couplingEntry">
+            <input type="radio" id="squa" name="saveSize" value=2 onclick="sizeSaveChange(this.value)">
+            <label for="squa">Square, 1:1</label>
+          </div>
+        </div>
+
+        <div class="module">
+          <button type="button" class="layoutButton" onclick="setTemplate(0)">Layout A</button>
+        </div>
+        <div class="module">
+          <button type="button" class="layoutButton" onclick="setTemplate(1)">Layout B</button>
+        </div>
+        <!-- <select name="templateChange" id="templateChange" onchange="setTemplate(this.value)">
+          <option value="0" selected="selected">Layout A</option>
+          <option value="1">Layout B</option>
+        </select> -->
+      </div>
+      
       <button type="button" class="collapsible"><h1>THE TWIST</h1></button>
       <div class="content">
         <div class="coupling1" id="radiusTwist">
@@ -80,34 +109,33 @@
               <label class="radio-label rad3">
                 <input type="radio" name="color" onclick="setColorTop(3)">
               </label>
-              <label class="radio-label rad4">
-                <input type="radio" name="color" onclick="setColorTop(4)">
-              </label>
-              <label class="radio-label rad5">
-                <input type="radio" name="color" onclick="setColorTop(5)">
-              </label>
-              <label class="radio-label rad6">
-                <input type="radio" name="color" onclick="setColorTop(6)">
-              </label>
             </div>
             <div class="photo-group" id="photo-top">
               <select class="photoSelect" name="photoSelect" id="photoTopChange" onchange="setPhoto(0, this.value)">
-                <option value="0" selected="selected">Flower 1</option>
-                <option value="1">Flower 2</option>
-                <option value="2">Flower 3</option>
-                <option value="3">Flower 4</option>
-                <option value="4">Flower 5</option>
-                <option value="5">Flower 6</option>
-                <option value="6">City 1</option>
-                <option value="7">City 2</option>
-                <option value="8">City 3</option>
-                <option value="9">City 4</option>
-                <option value="10">Evening 1</option>
-                <option value="11">Evening 2</option>
-                <option value="12">Palms 1</option>
-                <option value="13">Palms 2</option>
-                <option value="14">Water</option>
-                <option value="15">Clouds</option>
+                <option value="0" selected="selected">City 1</option>
+                <option value="1">City 2</option>
+                <option value="2">City 3</option>
+                <option value="3">City 4</option>
+                <option value="4">City 5</option>
+                <option value="5">City 6</option>
+                <option value="6">City 7</option>
+                <option value="7">Clouds 1</option>
+                <option value="8">Clouds 2</option>
+                <option value="9">Clouds 3</option>
+                <option value="10">Disco Ball</option>
+                <option value="11">Escalator</option>
+                <option value="12">Fabric</option>
+                <option value="13">Flora 1</option>
+                <option value="14">Flora 2</option>
+                <option value="15">Flora 3</option>
+                <option value="16">Flora 4</option>
+                <option value="17">Flora 5</option>
+                <option value="18">Flora 6</option>
+                <option value="19">Flora 7</option>
+                <option value="20">Hoops</option>
+                <option value="21">Lights</option>
+                <option value="22">Ocean 1</option>
+                <option value="23">Ocean 2</option>
               </select>
             </div>
             <div class="upload-group" id="upload-top">
@@ -152,34 +180,33 @@
               <label class="radio-label rad3">
                 <input type="radio" name="color" onclick="setColorBot(3)">
               </label>
-              <label class="radio-label rad4">
-                <input type="radio" name="color" onclick="setColorBot(4)">
-              </label>
-              <label class="radio-label rad5">
-                <input type="radio" name="color" onclick="setColorBot(5)">
-              </label>
-              <label class="radio-label rad6">
-                <input type="radio" name="color" onclick="setColorBot(6)">
-              </label>
             </div>
             <div class="photo-group" id="photo-bot">
               <select class="photoSelect" name="photoSelect" id="photoBotChange" onchange="setPhoto(1, this.value)">
-                <option value="0" selected="selected">Flower 1</option>
-                <option value="1">Flower 2</option>
-                <option value="2">Flower 3</option>
-                <option value="3">Flower 4</option>
-                <option value="4">Flower 5</option>
-                <option value="5">Flower 6</option>
-                <option value="6">City 1</option>
-                <option value="7">City 2</option>
-                <option value="8">City 3</option>
-                <option value="9">City 4</option>
-                <option value="10">Evening 1</option>
-                <option value="11">Evening 2</option>
-                <option value="12">Palms 1</option>
-                <option value="13">Palms 2</option>
-                <option value="14">Water</option>
-                <option value="15">Clouds</option>
+                <option value="0" selected="selected">City 1</option>
+                <option value="1">City 2</option>
+                <option value="2">City 3</option>
+                <option value="3">City 4</option>
+                <option value="4">City 5</option>
+                <option value="5">City 6</option>
+                <option value="6">City 7</option>
+                <option value="7">Clouds 1</option>
+                <option value="8">Clouds 2</option>
+                <option value="9">Clouds 3</option>
+                <option value="10">Disco Ball</option>
+                <option value="11">Escalator</option>
+                <option value="12">Fabric</option>
+                <option value="13">Flora 1</option>
+                <option value="14">Flora 2</option>
+                <option value="15">Flora 3</option>
+                <option value="16">Flora 4</option>
+                <option value="17">Flora 5</option>
+                <option value="18">Flora 6</option>
+                <option value="19">Flora 7</option>
+                <option value="20">Hoops</option>
+                <option value="21">Lights</option>
+                <option value="22">Ocean 1</option>
+                <option value="23">Ocean 2</option>
               </select>
             </div>
             <div class="upload-group" id="upload-bot">
@@ -224,34 +251,33 @@
               <label class="radio-label rad3">
                 <input type="radio" name="color" onclick="setColorIn(3)">
               </label>
-              <label class="radio-label rad4">
-                <input type="radio" name="color" onclick="setColorIn(4)">
-              </label>
-              <label class="radio-label rad5">
-                <input type="radio" name="color" onclick="setColorIn(5)">
-              </label>
-              <label class="radio-label rad6">
-                <input type="radio" name="color" onclick="setColorIn(6)">
-              </label>
             </div>
             <div class="photo-group" id="photo-in">
               <select class="photoSelect" name="photoSelect" id="photoInChange" onchange="setPhoto(2, this.value)">
-                <option value="0" selected="selected">Flower 1</option>
-                <option value="1">Flower 2</option>
-                <option value="2">Flower 3</option>
-                <option value="3">Flower 4</option>
-                <option value="4">Flower 5</option>
-                <option value="5">Flower 6</option>
-                <option value="6">City 1</option>
-                <option value="7">City 2</option>
-                <option value="8">City 3</option>
-                <option value="9">City 4</option>
-                <option value="10">Evening 1</option>
-                <option value="11">Evening 2</option>
-                <option value="12">Palms 1</option>
-                <option value="13">Palms 2</option>
-                <option value="14">Water</option>
-                <option value="15">Clouds</option>
+                <option value="0" selected="selected">City 1</option>
+                <option value="1">City 2</option>
+                <option value="2">City 3</option>
+                <option value="3">City 4</option>
+                <option value="4">City 5</option>
+                <option value="5">City 6</option>
+                <option value="6">City 7</option>
+                <option value="7">Clouds 1</option>
+                <option value="8">Clouds 2</option>
+                <option value="9">Clouds 3</option>
+                <option value="10">Disco Ball</option>
+                <option value="11">Escalator</option>
+                <option value="12">Fabric</option>
+                <option value="13">Flora 1</option>
+                <option value="14">Flora 2</option>
+                <option value="15">Flora 3</option>
+                <option value="16">Flora 4</option>
+                <option value="17">Flora 5</option>
+                <option value="18">Flora 6</option>
+                <option value="19">Flora 7</option>
+                <option value="20">Hoops</option>
+                <option value="21">Lights</option>
+                <option value="22">Ocean 1</option>
+                <option value="23">Ocean 2</option>
               </select>
             </div>
             <div class="upload-group" id="upload-in">
@@ -296,34 +322,33 @@
               <label class="radio-label rad3">
                 <input type="radio" name="color" onclick="setColorOut(3)">
               </label>
-              <label class="radio-label rad4">
-                <input type="radio" name="color" onclick="setColorOut(4)">
-              </label>
-              <label class="radio-label rad5">
-                <input type="radio" name="color" onclick="setColorOut(5)">
-              </label>
-              <label class="radio-label rad6">
-                <input type="radio" name="color" onclick="setColorOut(6)">
-              </label>
             </div>
             <div class="photo-group" id="photo-out">
               <select class="photoSelect" name="photoSelect" id="photoOutChange" onchange="setPhoto(3, this.value)">
-                <option value="0">Flower 1</option>
-                <option value="1">Flower 2</option>
-                <option value="2">Flower 3</option>
-                <option value="3">Flower 4</option>
-                <option value="4">Flower 5</option>
-                <option value="5">Flower 6</option>
-                <option value="6">City 1</option>
-                <option value="7">City 2</option>
-                <option value="8">City 3</option>
-                <option value="9">City 4</option>
-                <option value="10">Evening 1</option>
-                <option value="11">Evening 2</option>
-                <option value="12">Palms 1</option>
-                <option value="13">Palms 2</option>
-                <option value="14">Water</option>
-                <option value="15" selected="selected">Clouds</option>
+                <option value="0" selected="selected">City 1</option>
+                <option value="1">City 2</option>
+                <option value="2">City 3</option>
+                <option value="3">City 4</option>
+                <option value="4">City 5</option>
+                <option value="5">City 6</option>
+                <option value="6">City 7</option>
+                <option value="7">Clouds 1</option>
+                <option value="8">Clouds 2</option>
+                <option value="9">Clouds 3</option>
+                <option value="10">Disco Ball</option>
+                <option value="11">Escalator</option>
+                <option value="12">Fabric</option>
+                <option value="13">Flora 1</option>
+                <option value="14">Flora 2</option>
+                <option value="15">Flora 3</option>
+                <option value="16">Flora 4</option>
+                <option value="17">Flora 5</option>
+                <option value="18">Flora 6</option>
+                <option value="19">Flora 7</option>
+                <option value="20">Hoops</option>
+                <option value="21">Lights</option>
+                <option value="22">Ocean 1</option>
+                <option value="23">Ocean 2</option>
               </select>
             </div>
             <div class="upload-group" id="upload-out">
@@ -377,7 +402,7 @@
 
       <button type="button" class="collapsible"><h1>SAVE</h1></button>
       <div class="content">
-        <div class="coupling2">
+        <!-- <div class="coupling2">
           <div class="couplingEntry">
             <input type="radio" id="window" name="saveSize" value=0 onclick="sizeSaveChange(this.value)" checked>
             <label for="window">Window Size</label>
@@ -390,7 +415,7 @@
             <input type="radio" id="squa" name="saveSize" value=2 onclick="sizeSaveChange(this.value)">
             <label for="squa">Square, 1:1</label>
           </div>
-        </div>
+        </div> -->
         <div class="module">
           <button type="button" class="saveButton" onclick="runSave()">SAVE LOOP</button>
         </div>

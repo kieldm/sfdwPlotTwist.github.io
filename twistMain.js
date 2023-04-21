@@ -1,19 +1,19 @@
 class TwistMain {  
   constructor(){
-    this.res = 300;
+    this.res = 200;
 
     this.radius = 300;
     this.slope = 8;
     this.stripH = 150;
 
-    this.twists = 5;
+    this.twists = 3;
     this.ang = (this.twists * 2 * PI)/this.res;
 
-    this.yHalf = -this.res * this.slope/2 - this.stripH/2;
+    this.yHalf = -this.res * this.slope/2;
   }
 
   update(){
-
+    this.yHalf = -this.res * this.slope/2;
   }
 
   display(){
@@ -178,7 +178,7 @@ class TwistMain {
           
           var u = 0; var vTop = 0; var vBot = 0;
           if(textureOn){
-            var xU = cos(n * this.ang - spinCore) * (this.radius - this.stripH/2 + p * this.stripH);
+            var xU = cos(n * this.ang - spinCore - rotYcamera) * (this.radius - this.stripH/2 + p * this.stripH);
 
             u = map(xU + offU, centerW, currentTexture.width + centerW, 0, 1);
 

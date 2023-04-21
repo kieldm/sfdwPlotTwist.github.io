@@ -203,7 +203,7 @@ a{
   text-decoration:underline
 }
 button{
-  width:200px
+  width:190px;
 }
 input[type=radio]{
   margin-left:0px;
@@ -326,6 +326,11 @@ select.photoSelect {
   flex-direction:column;
   padding-bottom:10px;
 }
+.coupling3{
+  display:flex;
+  flex-direction:column;
+  padding-left:5px;
+}
 label{
   font-family:'IBM Plex Mono',monospace;
   font-size:14px;
@@ -337,7 +342,8 @@ div.coupling_label{
   width:50px
 }
 div.module{
-  margin-bottom:10px
+  margin:5px;
+  
 }
 #recStatus{
   display:none;
@@ -476,7 +482,7 @@ button.dropbtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
+  width: 44px;
   height: 24px;
   border-radius: 50%;
   margin-right: 2px;
@@ -490,13 +496,10 @@ button.dropbtn {
   display: none;
 }
 
-.radio-label.rad0 {background-color: #000;}
-.radio-label.rad1 {background-color: #fff;}
-.radio-label.rad2 {background-color: #f06428;}
-.radio-label.rad3 {background-color: #3447ff;}
-.radio-label.rad4 {background-color: #faff00;}
-.radio-label.rad5 {background-color: #ffdcce;}
-.radio-label.rad6 {background-color: #f13dff;}
+.radio-label.rad0 {background-color: #f06428;}
+.radio-label.rad1 {background-color: #3447ff;}
+.radio-label.rad2 {background-color: #ffdcce;}
+.radio-label.rad3 {background-color: #f13dff;}
 
 .radio-label:hover {
   border:#fff 1px solid;
