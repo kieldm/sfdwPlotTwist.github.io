@@ -32,6 +32,10 @@ var mainTwist;
 var spinCore = 0;
 var spin = 0;
 
+var twistCore = 0;
+var twistTicker = 0;
+var twist = 0;
+
 var rotXcamera = 0;
 var rotZcamera = 0;
 var rotYcamera = 0;
@@ -43,7 +47,8 @@ let saveMode = 0;
 let templateMode = 0;
 
 const frate = 30;
-var numFrames = 100;
+var loopLength = 180;
+var numFrames = loopLength;
 let recording = false;
 let recordedFrames = 0;
 
@@ -159,17 +164,20 @@ function draw(){
   runRecording();
 
   spinCore += spin;
+
+  twistTicker += twist;
+  twistCore = map(sin(twistTicker), -1, 1, -2.75, 2.75);
 }
 
-function mouseReleased(){
-  console.log("Radius: " + mainTwist.radius);
-  console.log("Slope: " + mainTwist.slope);
-  console.log("StripH: " + mainTwist.stripH);
+// function mouseReleased(){
+//   console.log("Radius: " + mainTwist.radius);
+//   console.log("Slope: " + mainTwist.slope);
+//   console.log("StripH: " + mainTwist.stripH);
 
-  console.log("rotX: " + rotXcamera);
-  console.log("rotZ: " + rotZcamera);
-  console.log("rotY: " + rotYcamera);
-}
+//   console.log("rotX: " + rotXcamera);
+//   console.log("rotZ: " + rotZcamera);
+//   console.log("rotY: " + rotYcamera);
+// }
 
 function windowResized(){
   if(saveMode == 0){
@@ -256,7 +264,7 @@ function templateDisplay() {
         textSize(20);
         fill(foreColor);
         text("SF Design Week 2023", 0, -25);
-        text("03.03 – 06.11", 0, 0);
+        text("06.03 – 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -275,7 +283,7 @@ function templateDisplay() {
         textSize(20);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("03.03 – 06.11", 0, 25);
+        text("06.03 – 06.11", 0, 25);
       pop();
     }
   } else if(saveMode == 1){    /////////////////////////////// saveMode Vertical
@@ -302,7 +310,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, -50);
-        text("03.03 – 06.11", 0, 0);
+        text("06.03 – 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -325,7 +333,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("03.03 – 06.11", 0, 50);
+        text("06.03 – 06.11", 0, 50);
       pop();
     }
   } else if(saveMode == 2){    /////////////////////////////// saveMode Square
@@ -352,7 +360,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, -50);
-        text("03.03 – 06.11", 0, 0);
+        text("06.03 – 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -375,7 +383,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("03.03 – 06.11", 0, 50);
+        text("06.03 – 06.11", 0, 50);
       pop();
     }
   }

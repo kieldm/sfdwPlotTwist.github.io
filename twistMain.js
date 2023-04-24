@@ -1,18 +1,21 @@
 class TwistMain {  
   constructor(){
-    this.res = 200;
+    this.res = 400;
 
     this.radius = 300;
     this.slope = 8;
     this.stripH = 150;
 
-    this.twists = 3;
+    this.twists = 6;
     this.ang = (this.twists * 2 * PI)/this.res;
 
     this.yHalf = -this.res * this.slope/2;
   }
 
   update(){
+    this.twists = 3 + twistCore;
+    this.ang = (this.twists * 2 * PI)/this.res;
+
     this.yHalf = -this.res * this.slope/2;
   }
 

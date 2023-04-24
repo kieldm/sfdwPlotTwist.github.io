@@ -3,7 +3,7 @@ function setRadius(val){
 }
 
 function setSlope(val){
-  mainTwist.slope = round(map(val, 0, 100, 10, 50));
+  mainTwist.slope = round(map(val, 0, 100, 4, 30));
 }
 
 function setStrip(val){
@@ -152,7 +152,23 @@ function setWrap(section, val){
 }
 
 function setSpin(val){
-  spin = map(val, 0, 20, -0.1, 0.1);
+  if(val == -1){
+    spin = -2*PI/loopLength;
+  } else if(val == 1){
+    spin = -2*PI/loopLength;
+  } else {
+    spin = 0;
+  }
+}
+
+function setTwist(val){
+  if(val == -1){
+    twist = -2*PI/loopLength;
+  } else if(val == 1){
+    twist = -2*PI/loopLength;
+  } else {
+    twist = 0;
+  }
 }
 
 function setRotX(val){
@@ -208,12 +224,15 @@ function setTemplate(val){
   secretY = 0;
   secretZ = 0;
 
+  spinCore = 0;
+  twistTicker = 0;
+
   if(saveMode == 0){
     colorIn = colorA[2];
 
     if(templateMode == 0){
       mainTwist.radius = 556;
-      mainTwist.slope = 20;
+      mainTwist.slope = 10;
       mainTwist.stripH = mainTwist.radius * 4/5;
 
       rotXcamera = 0.2513; 
@@ -221,7 +240,7 @@ function setTemplate(val){
       rotYcamera = -0.0628;
     } else if(templateMode == 1){
       mainTwist.radius = width/4;
-      mainTwist.slope = 21;
+      mainTwist.slope = 10;
       mainTwist.stripH = mainTwist.radius * 4/5;
 
       rotXcamera = -0.094; 
@@ -233,7 +252,7 @@ function setTemplate(val){
 
     if(templateMode == 0){
       mainTwist.radius = 364;
-      mainTwist.slope = 31;
+      mainTwist.slope = 15;
       mainTwist.stripH = 216;
 
       rotXcamera = 1.571; 
@@ -241,7 +260,7 @@ function setTemplate(val){
       rotYcamera = 0.628;
     } else if(templateMode == 1){
       mainTwist.radius = 393;
-      mainTwist.slope = 30;
+      mainTwist.slope = 15;
       mainTwist.stripH = 362;
 
       rotXcamera = -0.126; 
@@ -255,7 +274,7 @@ function setTemplate(val){
       secretY = -400;
 
       mainTwist.radius = 605;
-      mainTwist.slope = 47;
+      mainTwist.slope = 24;
       mainTwist.stripH = 363;
 
       rotXcamera = 1.508; 
@@ -265,7 +284,7 @@ function setTemplate(val){
       secretX = 150;
 
       mainTwist.radius = 631;
-      mainTwist.slope = 35;
+      mainTwist.slope = 17;
       mainTwist.stripH = 391;
 
       rotXcamera = -0.126; 
@@ -275,7 +294,7 @@ function setTemplate(val){
   }
   document.getElementById('radiusSlider').value = map(mainTwist.radius, 300, 800, 0, 100);
   document.getElementById('stripSlider').value = map(mainTwist.stripH,  200, 500, 0, 100);
-  document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 50, 0, 100);
+  document.getElementById('slopeSlider').value = map(mainTwist.slope, 4, 30, 0, 100);
 
   document.getElementById('rotXslider').value = map(rotXcamera, -PI/2, PI/2, 0, 100);
   document.getElementById('rotZslider').value = map(rotZcamera, -PI/2, PI/2, 0, 100);

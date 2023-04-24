@@ -39,7 +39,7 @@ function runRecording(){
 function runSave(){
   setRecorder();
 
-  numFrames = 60;
+  numFrames = loopLength;
   recording = true;
 
   toggleRecMessage();
