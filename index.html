@@ -136,6 +136,7 @@
                 <option value="21">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
+                <option value="24">Rain</option>
               </select>
             </div>
             <div class="upload-group" id="upload-top">
@@ -207,6 +208,7 @@
                 <option value="21">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
+                <option value="24">Rain</option>
               </select>
             </div>
             <div class="upload-group" id="upload-bot">
@@ -278,6 +280,7 @@
                 <option value="21">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
+                <option value="24">Rain</option>
               </select>
             </div>
             <div class="upload-group" id="upload-in">
@@ -349,6 +352,7 @@
                 <option value="21">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
+                <option value="24">Rain</option>
               </select>
             </div>
             <div class="upload-group" id="upload-out">
@@ -378,13 +382,15 @@
 
       <button type="button" class="collapsible"><h1>MOTION</h1></button>
       <div class="content">
-        <div class="coupling1" id="radiusTwist">
-          <div class="coupling_label"><h3>Spin</h3></div>
-          <input type="range" min="-1" max="1" value="0" id="spinSlider" oninput="setSpin(this.value)">
-        </div>
-        <div class="coupling1" id="radiusTwist">
-          <div class="coupling_label"><h3>Twist</h3></div>
-          <input type="range" min="-1" max="1" value="0" id="twistSlider" oninput="setTwist(this.value)">
+        <div class="contentHorz">
+          <div class="coupling1" id="radiusTwist">
+            <input type="checkbox" id="spinCheck" oninput="setSpin()">
+            <div class="coupling_label2"><h3>Spin</h3></div>
+          </div>
+          <div class="coupling1" id="radiusTwist">
+            <input type="checkbox" id="twistCheck" oninput="setTwist()">
+            <div class="coupling_label2"><h3>Spring</h3></div>
+          </div>
         </div>
       </div>
 
@@ -427,6 +433,11 @@
           <p>RECORDING IN PROCESS <br>(preview not accurate)</p>
         </div>
       </div>
+
+      <!-- <div class="coupling1" id="textureRot">
+        <div class="coupling_label"><h3>Test Rot</h3></div>
+        <input type="range" min="0" max="100" value="50" id="rotYslider" oninput="setTestRot(this.value)">
+      </div> -->
     </div>
   </div>
 

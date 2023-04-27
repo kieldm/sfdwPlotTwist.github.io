@@ -3,7 +3,7 @@ function setRadius(val){
 }
 
 function setSlope(val){
-  mainTwist.slope = round(map(val, 0, 100, 4, 30));
+  mainTwist.slope = round(map(val, 0, 100, 10, 30));
 }
 
 function setStrip(val){
@@ -151,36 +151,52 @@ function setWrap(section, val){
   }
 }
 
-function setSpin(val){
-  if(val == -1){
-    spin = -2*PI/loopLength;
-  } else if(val == 1){
+function setSpin(){
+  spinOn = !spinOn;
+
+  if(spinOn){
     spin = -2*PI/loopLength;
   } else {
     spin = 0;
   }
+
+  // if(val == -1){
+  //   spin = -2*PI/loopLength;
+  // } else if(val == 1){
+  //   spin = -2*PI/loopLength;
+  // } else {
+  //   spin = 0;
+  // }
 }
 
-function setTwist(val){
-  if(val == -1){
-    twist = -2*PI/loopLength;
-  } else if(val == 1){
+function setTwist(){
+  twistOn = !twistOn;
+
+  if(twistOn){
     twist = -2*PI/loopLength;
   } else {
     twist = 0;
   }
+
+  // if(val == -1){
+  //   twist = -2*PI/loopLength;
+  // } else if(val == 1){
+  //   twist = -2*PI/loopLength;
+  // } else {
+  //   twist = 0;
+  // }
 }
 
 function setRotX(val){
-  rotXcamera = map(val, 0, 100, -PI/2, PI/2);
+  rotXcameraAdd = map(val, 0, 100, -PI/8, PI/8);
 }
 
 function setRotZ(val){
-  rotZcamera = map(val, 0, 100, -PI/2, PI/2);
+  rotZcameraAdd = map(val, 0, 100, -PI/8, PI/8);
 }
 
 function setRotY(val){
-  rotYcamera = map(val, 0, 100, -PI, PI);
+  rotYcameraAdd = map(val, 0, 100, -PI/4, PI/4);
 }
 
 function setUoffset(select, val){
@@ -189,6 +205,10 @@ function setUoffset(select, val){
 
 function setVoffset(select, val){
   vOffset[select] = val;
+}
+
+function setTestRot(val){
+  textureRot = map(val, 0, 100, -PI, PI);
 }
 
 function hideWidget(){
@@ -223,6 +243,10 @@ function setTemplate(val){
   secretX = 0;
   secretY = 0;
   secretZ = 0;
+
+  rotXcameraAdd = 0;
+  rotZcameraAdd = 0;
+  rotYcameraAdd = 0;
 
   spinCore = 0;
   twistTicker = 0;
@@ -294,10 +318,12 @@ function setTemplate(val){
   }
   document.getElementById('radiusSlider').value = map(mainTwist.radius, 300, 800, 0, 100);
   document.getElementById('stripSlider').value = map(mainTwist.stripH,  200, 500, 0, 100);
-  document.getElementById('slopeSlider').value = map(mainTwist.slope, 4, 30, 0, 100);
+  document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 30, 0, 100);
 
-  document.getElementById('rotXslider').value = map(rotXcamera, -PI/2, PI/2, 0, 100);
-  document.getElementById('rotZslider').value = map(rotZcamera, -PI/2, PI/2, 0, 100);
-  document.getElementById('rotYslider').value = map(rotYcamera, -PI/2, PI/2, 0, 100);
+
+
+  document.getElementById('rotXslider').value = map(0, -PI/8, PI/8, 0, 100);
+  document.getElementById('rotZslider').value = map(0, -PI/8, PI/8, 0, 100);
+  document.getElementById('rotYslider').value = map(0, -PI/4, PI/4, 0, 100);
 
 }

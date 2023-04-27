@@ -179,11 +179,12 @@ class TwistMain {
           var yTop = this.slope * n;
           var yBot = this.slope * n + this.stripH;
           
-          var u = 0; var vTop = 0; var vBot = 0;
+          var uTop = 0; var uBot = 0; var vTop = 0; var vBot = 0;
           if(textureOn){
-            var xU = cos(n * this.ang - spinCore - rotYcamera) * (this.radius - this.stripH/2 + p * this.stripH);
+            var xU = cos(n * this.ang - spinCore - rotYcamera - rotYcameraAdd) * (this.radius - this.stripH/2 + p * this.stripH);
 
-            u = map(xU + offU, centerW, currentTexture.width + centerW, 0, 1);
+            uTop = map(xU + offU, centerW, currentTexture.width + centerW, 0, 1);
+            uBot = map(xU + offU, centerW, currentTexture.width + centerW, 0, 1);
 
             var yTopV = yTop + this.yHalf;
             var yBotV = yBot + this.yHalf;
@@ -192,8 +193,8 @@ class TwistMain {
             vBot = map(yBotV + offV, centerH, currentTexture.height + centerH, 0, 1);
           } 
 
-          vertex(x, yTop, z, u, vTop);
-          vertex(x, yBot, z, u, vBot);
+          vertex(x, yTop, z, uTop, vTop);
+          vertex(x, yBot, z, uBot, vBot);
         }
         endShape();
       }

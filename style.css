@@ -50,6 +50,15 @@ canvas{
 
   padding-top:5px;
 }
+.contentHorz {
+  display:flex;
+  flex-direction:row;
+}
+.coupling_label2 {
+  width:50px;
+  padding-left:5px;
+  padding-top:3px;
+}
 .checksColumn{
   display:flex;
   flex-direction:column;
@@ -339,7 +348,7 @@ label{
 }
 div.coupling_label{
   padding-right:10px;
-  width:50px
+  width:50px;
 }
 div.module{
   margin:5px;

@@ -31,14 +31,20 @@ var vOffset = [];
 var mainTwist;
 var spinCore = 0;
 var spin = 0;
+var spinOn = false;
 
 var twistCore = 0;
 var twistTicker = 0;
 var twist = 0;
+var twistOn = false;
 
 var rotXcamera = 0;
 var rotZcamera = 0;
 var rotYcamera = 0;
+
+var rotXcameraAdd = 0;
+var rotZcameraAdd = 0;
+var rotYcameraAdd = 0;
 
 var widgetOn = true;
 var thisDensity = 1;
@@ -47,7 +53,7 @@ let saveMode = 0;
 let templateMode = 0;
 
 const frate = 30;
-var loopLength = 180;
+var loopLength = 150;
 var numFrames = loopLength;
 let recording = false;
 let recordedFrames = 0;
@@ -60,6 +66,8 @@ let sizeScale = 1;
 let secretX = 0;
 let secretY = 0;
 let secretZ = 0;
+
+let textureRot = 0;
 
 function preload(){
   tFont[0] = loadFont("resources/Linotype - NHaasGroteskDSPro-65Md.otf");
@@ -88,6 +96,7 @@ function preload(){
   pgImage[21] = loadImage("resources/images/lights.gif");
   pgImage[22] = loadImage("resources/images/ocean1.gif");
   pgImage[23] = loadImage("resources/images/ocean2.gif");
+  pgImage[24] = loadImage("resources/images/rain.gif");
 
   pgLogo = loadImage("resources/PlotTwist_logo.png");
 }
@@ -145,9 +154,9 @@ function draw(){
     scale(sizeScale);
     translate(secretX, secretY, secretZ);
 
-    rotateX(rotXcamera);
-    rotateZ(rotZcamera);
-    rotateY(rotYcamera);
+    rotateX(rotXcamera + rotXcameraAdd);
+    rotateZ(rotZcamera + rotZcameraAdd);
+    rotateY(rotYcamera + rotYcameraAdd);
 
     rotateY(spinCore);
 
@@ -158,7 +167,15 @@ function draw(){
   push();
     scale(sizeScale);
 
+    translate(0, 0, 5000);
+
     templateDisplay();
+  pop();
+
+  push();
+    stroke(255, 0, 0);
+    rotateZ(textureRot);
+    line(0, 0, 0, -100);
   pop();
 
   runRecording();
@@ -166,7 +183,7 @@ function draw(){
   spinCore += spin;
 
   twistTicker += twist;
-  twistCore = map(sin(twistTicker), -1, 1, -2.75, 2.75);
+  twistCore = map(sin(twistTicker), -1, 1, -2.0, 2.0);
 }
 
 // function mouseReleased(){
