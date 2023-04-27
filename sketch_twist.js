@@ -281,7 +281,7 @@ function templateDisplay() {
         textSize(20);
         fill(foreColor);
         text("SF Design Week 2023", 0, -25);
-        text("06.03 – 06.11", 0, 0);
+        text("06.06 – 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -300,7 +300,7 @@ function templateDisplay() {
         textSize(20);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("06.03 – 06.11", 0, 25);
+        text("06.06 – 06.11", 0, 25);
       pop();
     }
   } else if(saveMode == 1){    /////////////////////////////// saveMode Vertical
@@ -327,7 +327,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, -50);
-        text("06.03 – 06.11", 0, 0);
+        text("06.06 – 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -350,7 +350,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("06.03 – 06.11", 0, 50);
+        text("06.06 – 06.11", 0, 50);
       pop();
     }
   } else if(saveMode == 2){    /////////////////////////////// saveMode Square
@@ -377,7 +377,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, -50);
-        text("06.03 – 06.11", 0, 0);
+        text("06.06 – 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -400,7 +400,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("06.03 – 06.11", 0, 50);
+        text("06.06 – 06.11", 0, 50);
       pop();
     }
   }
