@@ -172,11 +172,11 @@ function draw(){
     templateDisplay();
   pop();
 
-  push();
-    stroke(255, 0, 0);
-    rotateZ(textureRot);
-    line(0, 0, 0, -100);
-  pop();
+  // push();
+  //   stroke(255, 0, 0);
+  //   rotateZ(textureRot);
+  //   line(0, 0, 0, -100);
+  // pop();
 
   runRecording();
 
