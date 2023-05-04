@@ -141,7 +141,8 @@ function setup(){
   setStrip(document.getElementById("stripSlider").value);
   setSlope(document.getElementById("slopeSlider").value);
 
-  setTemplate(0);
+  // setTemplate(0);
+  setInitialTwist();
 }
 
 function draw(){

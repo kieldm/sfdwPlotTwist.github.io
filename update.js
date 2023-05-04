@@ -3,7 +3,8 @@ function setRadius(val){
 }
 
 function setSlope(val){
-  mainTwist.slope = round(map(val, 0, 100, 10, 30));
+  // mainTwist.slope = round(map(val, 0, 100, 10, 30));
+  mainTwist.slope = round(map(val, 0, 100, 6, 25));
 }
 
 function setStrip(val){
@@ -192,11 +193,13 @@ function setRotX(val){
 }
 
 function setRotZ(val){
-  rotZcameraAdd = map(val, 0, 100, -PI/8, PI/8);
+  // rotZcameraAdd = map(val, 0, 100, -PI/8, PI/8);
+  rotZcameraAdd = map(val, 0, 100, -PI/2, PI/2);
 }
 
 function setRotY(val){
-  rotYcameraAdd = map(val, 0, 100, -PI/4, PI/4);
+  // rotYcameraAdd = map(val, 0, 100, -PI/4, PI/4);
+  rotYcameraAdd = map(val, 0, 100, -PI, PI);
 }
 
 function setUoffset(select, val){
@@ -240,9 +243,93 @@ function toggleRecMessage(){
 function setTemplate(val){
   templateMode = val;
 
-  secretX = 0;
-  secretY = 0;
-  secretZ = 0;
+  // secretX = 0;
+  // secretY = 0;
+  // secretZ = 0;
+
+  // rotXcameraAdd = 0;
+  // rotZcameraAdd = 0;
+  // rotYcameraAdd = 0;
+
+  // spinCore = 0;
+  // twistTicker = 0;
+
+  // if(saveMode == 0){
+  //   colorIn = colorA[2];
+
+  //   if(templateMode == 0){
+  //     mainTwist.radius = 556;
+  //     mainTwist.slope = 10;
+  //     mainTwist.stripH = mainTwist.radius * 4/5;
+
+  //     rotXcamera = 0.2513; 
+  //     rotZcamera = -atan2(height, width);
+  //     rotYcamera = -0.0628;
+  //   } else if(templateMode == 1){
+  //     mainTwist.radius = width/4;
+  //     mainTwist.slope = 10;
+  //     mainTwist.stripH = mainTwist.radius * 4/5;
+
+  //     rotXcamera = -0.094; 
+  //     rotZcamera = 0.095;
+  //     rotYcamera = 0;
+  //   }
+  // } else if(saveMode == 1){
+  //   colorIn = colorA[3];
+
+  //   if(templateMode == 0){
+  //     mainTwist.radius = 364;
+  //     mainTwist.slope = 15;
+  //     mainTwist.stripH = 216;
+
+  //     rotXcamera = 1.571; 
+  //     rotZcamera = -0.408;
+  //     rotYcamera = 0.628;
+  //   } else if(templateMode == 1){
+  //     mainTwist.radius = 393;
+  //     mainTwist.slope = 15;
+  //     mainTwist.stripH = 362;
+
+  //     rotXcamera = -0.126; 
+  //     rotZcamera = -0.188;
+  //     rotYcamera = 1.005;
+  //   }
+  // } else if(saveMode == 2){
+  //   colorIn = colorA[3];
+
+  //   if(templateMode == 0){
+  //     secretY = -400;
+
+  //     mainTwist.radius = 605;
+  //     mainTwist.slope = 24;
+  //     mainTwist.stripH = 363;
+
+  //     rotXcamera = 1.508; 
+  //     rotZcamera = -0.440;
+  //     rotYcamera = 0.314;
+  //   } else if(templateMode == 1){
+  //     secretX = 150;
+
+  //     mainTwist.radius = 631;
+  //     mainTwist.slope = 17;
+  //     mainTwist.stripH = 391;
+
+  //     rotXcamera = -0.126; 
+  //     rotZcamera = -0.314;
+  //     rotYcamera = 0.691;
+  //   }
+  // }
+  // document.getElementById('radiusSlider').value = map(mainTwist.radius, 300, 800, 0, 100);
+  // document.getElementById('stripSlider').value = map(mainTwist.stripH,  200, 500, 0, 100);
+  // document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 30, 0, 100);
+
+  // document.getElementById('rotXslider').value = map(0, -PI/8, PI/8, 0, 100);
+  // document.getElementById('rotZslider').value = map(0, -PI/8, PI/8, 0, 100);
+  // document.getElementById('rotYslider').value = map(0, -PI/4, PI/4, 0, 100);
+}
+
+function setInitialTwist(){
+  templateMode = 0;
 
   rotXcameraAdd = 0;
   rotZcameraAdd = 0;
@@ -251,79 +338,20 @@ function setTemplate(val){
   spinCore = 0;
   twistTicker = 0;
 
-  if(saveMode == 0){
-    colorIn = colorA[2];
+  mainTwist.radius = 556;
+  mainTwist.slope = 10;
+  mainTwist.stripH = mainTwist.radius * 4/5;
 
-    if(templateMode == 0){
-      mainTwist.radius = 556;
-      mainTwist.slope = 10;
-      mainTwist.stripH = mainTwist.radius * 4/5;
+  rotXcamera = 0.2513; 
+  rotZcamera = -atan2(height, width);
+  rotYcamera = -0.0628;
 
-      rotXcamera = 0.2513; 
-      rotZcamera = -atan2(height, width);
-      rotYcamera = -0.0628;
-    } else if(templateMode == 1){
-      mainTwist.radius = width/4;
-      mainTwist.slope = 10;
-      mainTwist.stripH = mainTwist.radius * 4/5;
-
-      rotXcamera = -0.094; 
-      rotZcamera = 0.095;
-      rotYcamera = 0;
-    }
-  } else if(saveMode == 1){
-    colorIn = colorA[3];
-
-    if(templateMode == 0){
-      mainTwist.radius = 364;
-      mainTwist.slope = 15;
-      mainTwist.stripH = 216;
-
-      rotXcamera = 1.571; 
-      rotZcamera = -0.408;
-      rotYcamera = 0.628;
-    } else if(templateMode == 1){
-      mainTwist.radius = 393;
-      mainTwist.slope = 15;
-      mainTwist.stripH = 362;
-
-      rotXcamera = -0.126; 
-      rotZcamera = -0.188;
-      rotYcamera = 1.005;
-    }
-  } else if(saveMode == 2){
-    colorIn = colorA[3];
-
-    if(templateMode == 0){
-      secretY = -400;
-
-      mainTwist.radius = 605;
-      mainTwist.slope = 24;
-      mainTwist.stripH = 363;
-
-      rotXcamera = 1.508; 
-      rotZcamera = -0.440;
-      rotYcamera = 0.314;
-    } else if(templateMode == 1){
-      secretX = 150;
-
-      mainTwist.radius = 631;
-      mainTwist.slope = 17;
-      mainTwist.stripH = 391;
-
-      rotXcamera = -0.126; 
-      rotZcamera = -0.314;
-      rotYcamera = 0.691;
-    }
-  }
   document.getElementById('radiusSlider').value = map(mainTwist.radius, 300, 800, 0, 100);
   document.getElementById('stripSlider').value = map(mainTwist.stripH,  200, 500, 0, 100);
-  document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 30, 0, 100);
-
-
+  // document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 30, 0, 100);
+  document.getElementById('slopeSlider').value = map(mainTwist.slope, 6, 25, 0, 100);
 
   document.getElementById('rotXslider').value = map(0, -PI/8, PI/8, 0, 100);
   document.getElementById('rotZslider').value = map(0, -PI/8, PI/8, 0, 100);
   document.getElementById('rotYslider').value = map(0, -PI/4, PI/4, 0, 100);
-
 }
