@@ -198,6 +198,19 @@ input[type=color]::-webkit-color-swatch{
   padding-bottom:10px;
   width:130px
 }
+.layoutButton2{
+  width:65px;
+  height:20px;
+  margin-left:5px;
+}
+.layoutButton2label{
+  width:45px;
+  height:20px;
+  margin-left:5px;
+}
+.layoutButton2label h3{
+  padding-top:4px;
+}
 p{
   font-family:'IBM Plex Mono',monospace;
   font-size:10px;
