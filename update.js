@@ -1,14 +1,14 @@
 function setRadius(val){
-  mainTwist.radius = round(map(val, 0, 100, 300, 800));
+  mainTwist.radius = round(map(val, 0, 100, 150, 800));
 }
 
 function setSlope(val){
   // mainTwist.slope = round(map(val, 0, 100, 10, 30));
-  mainTwist.slope = round(map(val, 0, 100, 6, 25));
+  mainTwist.slope = round(map(val, 0, 100, 4, 25));
 }
 
 function setStrip(val){
-  mainTwist.stripH = round(map(val, 0, 100, 200, 500));
+  mainTwist.stripH = round(map(val, 0, 100, 75, 500));
 }
 
 function setColorTop(val){ colorTop = colorA[val]; }
@@ -309,7 +309,7 @@ function setRibbon(val){
       mainTwist.stripH = 363;
 
       rotXcamera = 1.508; 
-      rotZcamera = -0.440;
+      rotZcamera = -0.475;
       rotYcamera = 0.314;
     } else if(ribbonMode == 1){
       secretX = 150;
@@ -323,10 +323,10 @@ function setRibbon(val){
       rotYcamera = 0.691;
     }
   }
-  document.getElementById('radiusSlider').value = map(mainTwist.radius, 300, 800, 0, 100);
-  document.getElementById('stripSlider').value = map(mainTwist.stripH,  200, 500, 0, 100);
+  document.getElementById('radiusSlider').value = map(mainTwist.radius, 150, 800, 0, 100);
+  document.getElementById('stripSlider').value = map(mainTwist.stripH,  75, 500, 0, 100);
   // document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 30, 0, 100);
-  document.getElementById('slopeSlider').value = map(mainTwist.slope, 6, 25, 0, 100);
+  document.getElementById('slopeSlider').value = map(mainTwist.slope, 4, 25, 0, 100);
   
   document.getElementById('rotXslider').value = map(0, -PI/8, PI/8, 0, 100);
   document.getElementById('rotZslider').value = map(0, -PI/2, PI/2, 0, 100);
@@ -364,10 +364,10 @@ function setInitialTwist(){
   rotZcamera = -atan2(height, width);
   rotYcamera = -0.0628;
 
-  document.getElementById('radiusSlider').value = map(mainTwist.radius, 300, 800, 0, 100);
-  document.getElementById('stripSlider').value = map(mainTwist.stripH,  200, 500, 0, 100);
+  document.getElementById('radiusSlider').value = map(mainTwist.radius, 150, 800, 0, 100);
+  document.getElementById('stripSlider').value = map(mainTwist.stripH,  75, 500, 0, 100);
   // document.getElementById('slopeSlider').value = map(mainTwist.slope, 10, 30, 0, 100);
-  document.getElementById('slopeSlider').value = map(mainTwist.slope, 6, 25, 0, 100);
+  document.getElementById('slopeSlider').value = map(mainTwist.slope, 4, 25, 0, 100);
 
   document.getElementById('rotXslider').value = map(0, -PI/8, PI/8, 0, 100);
   document.getElementById('rotZslider').value = map(0, -PI/2, PI/2, 0, 100);

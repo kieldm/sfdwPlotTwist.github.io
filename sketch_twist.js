@@ -118,10 +118,10 @@ function setup(){
   colorIn = colorA[2];
   colorOut = colorA[3];
 
-  pgIn = pgImage[0];
-  pgOut = pgImage[0];
-  pgTop = pgImage[0];
-  pgBot = pgImage[0];
+  pgIn = pgImage[21];
+  pgOut = pgImage[21];
+  pgTop = pgImage[21];
+  pgBot = pgImage[21];
 
   for(var m = 0; m < 4; m++){
     uOffset[m] = 50;

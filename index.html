@@ -90,6 +90,22 @@
         </div>
       </div>
 
+      <button type="button" class="collapsible"><h1>CAMERA</h1></button>
+      <div class="content">
+        <div class="coupling1" id="rotXcamera">
+          <div class="coupling_label"><h3>ROTATE X</h3></div>
+          <input type="range" min="0" max="100" value="50" id="rotXslider" oninput="setRotX(this.value)">
+        </div>
+        <div class="coupling1" id="rotZcamera">
+          <div class="coupling_label"><h3>ROTATE Z</h3></div>
+          <input type="range" min="0" max="100" value="50" id="rotZslider" oninput="setRotZ(this.value)">
+        </div>
+        <div class="coupling1" id="rotYcamera">
+          <div class="coupling_label"><h3>ROTATE Y</h3></div>
+          <input type="range" min="0" max="100" value="50" id="rotYslider" oninput="setRotY(this.value)">
+        </div>
+      </div>
+
       <button type="button" class="collapsible"><h1>SIDES</h1></button>
       <div class="content">
         <div class="coupling2">
@@ -116,7 +132,7 @@
             </div>
             <div class="photo-group" id="photo-top">
               <select class="photoSelect" name="photoSelect" id="photoTopChange" onchange="setPhoto(0, this.value)">
-                <option value="0" selected="selected">City 1</option>
+                <option value="0">City 1</option>
                 <option value="1">City 2</option>
                 <option value="2">City 3</option>
                 <option value="3">City 4</option>
@@ -137,7 +153,7 @@
                 <option value="18">Flora 6</option>
                 <option value="19">Flora 7</option>
                 <option value="20">Hoops</option>
-                <option value="21">Lights</option>
+                <option value="21" selected="selected">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
                 <option value="24">Rain</option>
@@ -188,7 +204,7 @@
             </div>
             <div class="photo-group" id="photo-bot">
               <select class="photoSelect" name="photoSelect" id="photoBotChange" onchange="setPhoto(1, this.value)">
-                <option value="0" selected="selected">City 1</option>
+                <option value="0">City 1</option>
                 <option value="1">City 2</option>
                 <option value="2">City 3</option>
                 <option value="3">City 4</option>
@@ -209,7 +225,7 @@
                 <option value="18">Flora 6</option>
                 <option value="19">Flora 7</option>
                 <option value="20">Hoops</option>
-                <option value="21">Lights</option>
+                <option value="21" selected="selected">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
                 <option value="24">Rain</option>
@@ -260,7 +276,7 @@
             </div>
             <div class="photo-group" id="photo-in">
               <select class="photoSelect" name="photoSelect" id="photoInChange" onchange="setPhoto(2, this.value)">
-                <option value="0" selected="selected">City 1</option>
+                <option value="0">City 1</option>
                 <option value="1">City 2</option>
                 <option value="2">City 3</option>
                 <option value="3">City 4</option>
@@ -281,7 +297,7 @@
                 <option value="18">Flora 6</option>
                 <option value="19">Flora 7</option>
                 <option value="20">Hoops</option>
-                <option value="21">Lights</option>
+                <option value="21" selected="selected">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
                 <option value="24">Rain</option>
@@ -332,7 +348,7 @@
             </div>
             <div class="photo-group" id="photo-out">
               <select class="photoSelect" name="photoSelect" id="photoOutChange" onchange="setPhoto(3, this.value)">
-                <option value="0" selected="selected">City 1</option>
+                <option value="0">City 1</option>
                 <option value="1">City 2</option>
                 <option value="2">City 3</option>
                 <option value="3">City 4</option>
@@ -353,7 +369,7 @@
                 <option value="18">Flora 6</option>
                 <option value="19">Flora 7</option>
                 <option value="20">Hoops</option>
-                <option value="21">Lights</option>
+                <option value="21" selected="selected">Lights</option>
                 <option value="22">Ocean 1</option>
                 <option value="23">Ocean 2</option>
                 <option value="24">Rain</option>
@@ -398,38 +414,8 @@
         </div>
       </div>
 
-      <button type="button" class="collapsible"><h1>CAMERA</h1></button>
-      <div class="content">
-        <div class="coupling1" id="rotXcamera">
-          <div class="coupling_label"><h3>ROTATE X</h3></div>
-          <input type="range" min="0" max="100" value="50" id="rotXslider" oninput="setRotX(this.value)">
-        </div>
-        <div class="coupling1" id="rotZcamera">
-          <div class="coupling_label"><h3>ROTATE Z</h3></div>
-          <input type="range" min="0" max="100" value="50" id="rotZslider" oninput="setRotZ(this.value)">
-        </div>
-        <div class="coupling1" id="rotYcamera">
-          <div class="coupling_label"><h3>ROTATE Y</h3></div>
-          <input type="range" min="0" max="100" value="50" id="rotYslider" oninput="setRotY(this.value)">
-        </div>
-      </div>
-
       <button type="button" class="collapsible"><h1>SAVE</h1></button>
       <div class="content">
-        <!-- <div class="coupling2">
-          <div class="couplingEntry">
-            <input type="radio" id="window" name="saveSize" value=0 onclick="sizeSaveChange(this.value)" checked>
-            <label for="window">Window Size</label>
-          </div>
-          <div class="couplingEntry">
-            <input type="radio" id="vert" name="saveSize" value=1 onclick="sizeSaveChange(this.value)">
-            <label for="vert">Vertical, 9:16</label>
-          </div>
-          <div class="couplingEntry">
-            <input type="radio" id="squa" name="saveSize" value=2 onclick="sizeSaveChange(this.value)">
-            <label for="squa">Square, 1:1</label>
-          </div>
-        </div> -->
         <div class="module">
           <button type="button" class="saveButton" onclick="runSave()">SAVE LOOP</button>
         </div>
@@ -437,11 +423,6 @@
           <p>RECORDING IN PROCESS <br>(preview not accurate)</p>
         </div>
       </div>
-
-      <!-- <div class="coupling1" id="textureRot">
-        <div class="coupling_label"><h3>Test Rot</h3></div>
-        <input type="range" min="0" max="100" value="50" id="rotYslider" oninput="setTestRot(this.value)">
-      </div> -->
     </div>
   </div>
 
@@ -453,7 +434,6 @@
   </div>
 
   <script>
-    // When the user clicks on <div>, open the popup
     function myFunction() {
       var popup = document.getElementById("myPopup");
       popup.classList.toggle("show");
