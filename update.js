@@ -161,13 +161,14 @@ function setSpin(){
     spin = 0;
   }
 
-  // if(val == -1){
-  //   spin = -2*PI/loopLength;
-  // } else if(val == 1){
-  //   spin = -2*PI/loopLength;
-  // } else {
-  //   spin = 0;
-  // }
+  document.getElementById('twistCheck').checked = false;
+  twistOn = document.getElementById('twistCheck').checked;
+  if(twistOn){
+    twist = -2*PI/loopLength;
+  } else {
+    twist = 0;
+    twistTicker = 0;
+  }
 }
 
 function setTwist(){
@@ -179,13 +180,14 @@ function setTwist(){
     twist = 0;
   }
 
-  // if(val == -1){
-  //   twist = -2*PI/loopLength;
-  // } else if(val == 1){
-  //   twist = -2*PI/loopLength;
-  // } else {
-  //   twist = 0;
-  // }
+  document.getElementById('spinCheck').checked = false;
+  spinOn = document.getElementById('spinCheck').checked;
+  if(spinOn){
+    spin = -2*PI/loopLength;
+  } else {
+    spin = 0;
+    twistTicker = 0;
+  }
 }
 
 function setRotX(val){
