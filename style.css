@@ -249,12 +249,12 @@ input[type=radio]{
   margin-left:5px
 }
 
-#photo-top { display:none; }
+#photo-top { display:flex; }
 #photo-bot { display:none; }
 #photo-in { display:none; }
 #photo-out { display:flex; }
 
-#radio-top { display:flex; }
+#radio-top { display:none; }
 #radio-bot { display:flex; }
 #radio-in { display:flex; }
 #radio-out { display:none; }
@@ -265,7 +265,7 @@ input[type=radio]{
 #upload-out { display:none; }
 
 #uv-top {
-  display:none;
+  display:flex;
   flex-direction: column;
 }
 #uv-bot {

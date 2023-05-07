@@ -15,7 +15,7 @@ var colorA = [];
 var colorTop, colorBot, colorIn, colorOut;
 var pgTop, pgBot, pgIn, pgOut;
 
-var topMode = 0;
+var topMode = 1;
 var botMode = 0;
 var inMode = 0;
 var outMode = 1;
@@ -120,7 +120,7 @@ function setup(){
 
   pgIn = pgImage[21];
   pgOut = pgImage[21];
-  pgTop = pgImage[21];
+  pgTop = pgImage[15];
   pgBot = pgImage[21];
 
   for(var m = 0; m < 4; m++){
