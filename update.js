@@ -261,8 +261,6 @@ function setRibbon(val){
   twistTicker = 0;
 
   if(saveMode == 0){
-    colorIn = colorA[2];
-
     if(ribbonMode == 0){
       mainTwist.radius = 556;
       mainTwist.slope = 10;
@@ -281,8 +279,6 @@ function setRibbon(val){
       rotYcamera = 0;
     }
   } else if(saveMode == 1){
-    colorIn = colorA[3];
-
     if(ribbonMode == 0){
       mainTwist.radius = 364;
       mainTwist.slope = 15;
@@ -301,8 +297,6 @@ function setRibbon(val){
       rotYcamera = 1.005;
     }
   } else if(saveMode == 2){
-    colorIn = colorA[3];
-
     if(ribbonMode == 0){
       secretY = -400;
 
@@ -374,4 +368,8 @@ function setInitialTwist(){
   document.getElementById('rotXslider').value = map(0, -PI/8, PI/8, 0, 100);
   document.getElementById('rotZslider').value = map(0, -PI/2, PI/2, 0, 100);
   document.getElementById('rotYslider').value = map(0, -PI, PI, 0, 100);
+}
+
+function runSaveImage(){
+  staticSave = true;
 }

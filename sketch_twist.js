@@ -57,8 +57,9 @@ var loopLength = 150;
 var numFrames = loopLength;
 let recording = false;
 let recordedFrames = 0;
-
 let recMessageOn = false;
+
+let staticSave = false;
 
 let templateScale = 1;
 let sizeScale = 1;
@@ -180,6 +181,11 @@ function draw(){
   // pop();
 
   runRecording();
+
+  if(staticSave){
+    saveCanvas('SFDWplotTwist', 'jpg');
+    staticSave = false;
+  }
 
   spinCore += spin;
 
