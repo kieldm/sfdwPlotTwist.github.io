@@ -183,7 +183,7 @@ function draw(){
   runRecording();
 
   if(staticSave){
-    saveCanvas('SFDWplotTwist', 'jpg');
+    saveCanvas('SFDWplotTwist', 'png');
     staticSave = false;
   }
 
@@ -288,7 +288,7 @@ function templateDisplay() {
         textSize(20);
         fill(foreColor);
         text("SF Design Week 2023", 0, -25);
-        text("06.06 – 06.11", 0, 0);
+        text("06.06 - 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -307,7 +307,7 @@ function templateDisplay() {
         textSize(20);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("06.06 – 06.11", 0, 25);
+        text("06.06 - 06.11", 0, 25);
       pop();
     }
   } else if(saveMode == 1){    /////////////////////////////// saveMode Vertical
@@ -334,7 +334,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, -50);
-        text("06.06 – 06.11", 0, 0);
+        text("06.06 - 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -357,7 +357,7 @@ function templateDisplay() {
         textSize(41);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("06.06 – 06.11", 0, 50);
+        text("06.06 - 06.11", 0, 50);
       pop();
     }
   } else if(saveMode == 2){    /////////////////////////////// saveMode Square
@@ -379,12 +379,12 @@ function templateDisplay() {
         scale(templateScale);
 
         translate(-1080/2, -1080/2);
-        translate(60, 1080 - 60);
+        translate(60, 1080 - 58);
         textFont(tFont[0]);
-        textSize(41);
+        textSize(40);
         fill(foreColor);
         text("SF Design Week 2023", 0, -50);
-        text("06.06 – 06.11", 0, 0);
+        text("06.06 - 06.11", 0, 0);
       pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
       push();      ////// LOGO
@@ -402,12 +402,12 @@ function templateDisplay() {
         scale(templateScale);
 
         translate(-1080/2, -1080/2);
-        translate(60, 90);
+        translate(60, 89);
         textFont(tFont[0]);
-        textSize(41);
+        textSize(40);
         fill(foreColor);
         text("SF Design Week 2023", 0, 0);
-        text("06.06 – 06.11", 0, 50);
+        text("06.06 - 06.11", 0, 50);
       pop();
     }
   }
