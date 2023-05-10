@@ -350,7 +350,6 @@ function templateDisplay() {
         translate(-1080/2, -1080/2);
         image(pgSqText2, 0, 0, 1080, 1080);
       pop();
-
     }
   }
 }
