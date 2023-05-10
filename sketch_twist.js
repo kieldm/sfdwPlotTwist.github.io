@@ -9,7 +9,7 @@ var spacer = 50;
 
 var pgT = [];
 var pgImage = [];
-var pgLogo;
+var pgLogo, pgSqText1, pgSqText2, pgVertText1, pgVertText2;
 
 var colorA = [];
 var colorTop, colorBot, colorIn, colorOut;
@@ -100,6 +100,10 @@ function preload(){
   pgImage[24] = loadImage("resources/images/rain.gif");
 
   pgLogo = loadImage("resources/PlotTwist_logo.png");
+  pgSqText1 = loadImage("resources/sq_text1.png");
+  pgSqText2 = loadImage("resources/sq_text2.png");
+  pgVertText1 = loadImage("resources/vert_text1.png");
+  pgVertText2 = loadImage("resources/vert_text2.png");
 }
 
 function setup(){
@@ -147,6 +151,10 @@ function setup(){
 }
 
 function draw(){
+  if(staticSave){
+    resizeForSave();
+  }
+
   background(bkgdColor);
   ortho(-width/2, width/2, -height/2, height/2, -10000, 100000);
   // ortho();
@@ -185,6 +193,8 @@ function draw(){
   if(staticSave){
     saveCanvas('SFDWplotTwist', 'png');
     staticSave = false;
+    resizeForPreview();
+
   }
 
   spinCore += spin;
@@ -311,104 +321,36 @@ function templateDisplay() {
       pop();
     }
   } else if(saveMode == 1){    /////////////////////////////// saveMode Vertical
-    var logoHeight = 300;
-
     if(templateMode == 0){                ///////////// LAYOUT A
-      push();      ////// LOGO
+      push();
         scale(templateScale);
-
         translate(-1080/2, -1920/2);
-        translate(1080 - 100, 150);
-
-        scale(logoHeight/pgLogo.height);
-        translate(-pgLogo.width, 0);
-        image(pgLogo, 0, 0);
+        image(pgVertText1, 0, 0, 1920, 1920);
       pop();
 
-      push();      ////// TEXT
-        scale(templateScale);
-
-        translate(-1080/2, -1920/2);
-        translate(100, 1920 - 100);
-        textFont(tFont[0]);
-        textSize(41);
-        fill(foreColor);
-        text("SF Design Week 2023", 0, -50);
-        text("06.06 - 06.11", 0, 0);
-      pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
-      push();      ////// LOGO
+      push();
         scale(templateScale);
-
         translate(-1080/2, -1920/2);
-        translate(1080 - 100, 1920 - 100);
-
-        scale(logoHeight/pgLogo.height);
-        translate(-pgLogo.width, -pgLogo.height);
-        image(pgLogo, 0, 0);
+        image(pgVertText2, 0, 0, 1920, 1920);
       pop();
 
-      push();      ////// TEXT
-        scale(templateScale);
-
-        translate(-1080/2, -1920/2);
-        translate(100, 190);
-        textFont(tFont[0]);
-        textSize(41);
-        fill(foreColor);
-        text("SF Design Week 2023", 0, 0);
-        text("06.06 - 06.11", 0, 50);
-      pop();
     }
   } else if(saveMode == 2){    /////////////////////////////// saveMode Square
-    var logoHeight = 240;
-
     if(templateMode == 0){                ///////////// LAYOUT A
-      push();      ////// LOGO
+      push();
         scale(templateScale);
-
         translate(-1080/2, -1080/2);
-        translate(1080 - 60, 60);
-
-        scale(logoHeight/pgLogo.height);
-        translate(-pgLogo.width, 0);
-        image(pgLogo, 0, 0);
+        image(pgSqText1, 0, 0, 1080, 1080);
       pop();
 
-      push();      ////// TEXT
-        scale(templateScale);
-
-        translate(-1080/2, -1080/2);
-        translate(60, 1080 - 58);
-        textFont(tFont[0]);
-        textSize(40);
-        fill(foreColor);
-        text("SF Design Week 2023", 0, -50);
-        text("06.06 - 06.11", 0, 0);
-      pop();
     } else if(templateMode == 1){         ///////////// LAYOUT B
-      push();      ////// LOGO
+      push();
         scale(templateScale);
-
         translate(-1080/2, -1080/2);
-        translate(1080 - 60, 1080 - 60);
-
-        scale(logoHeight/pgLogo.height);
-        translate(-pgLogo.width, -pgLogo.height);
-        image(pgLogo, 0, 0);
+        image(pgSqText2, 0, 0, 1080, 1080);
       pop();
 
-      push();      ////// TEXT
-        scale(templateScale);
-
-        translate(-1080/2, -1080/2);
-        translate(60, 89);
-        textFont(tFont[0]);
-        textSize(40);
-        fill(foreColor);
-        text("SF Design Week 2023", 0, 0);
-        text("06.06 - 06.11", 0, 50);
-      pop();
     }
   }
 }
