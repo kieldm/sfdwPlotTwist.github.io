@@ -136,9 +136,7 @@ function setup(){
   noSmooth();
   frameRate(frate);
   textureMode(NORMAL);
-  // textureWrap(REPEAT);
   textureWrap(MIRROR);
-  // textureWrap(CLAMP);
 
   mainTwist = new TwistMain();
 
@@ -157,8 +155,6 @@ function draw(){
 
   background(bkgdColor);
   ortho(-width/2, width/2, -height/2, height/2, -10000, 100000);
-  // ortho();
-  // orbitControl();
   
   push();
     scale(sizeScale);
@@ -350,6 +346,7 @@ function templateDisplay() {
         translate(-1080/2, -1080/2);
         image(pgSqText2, 0, 0, 1080, 1080);
       pop();
+
     }
   }
 }
