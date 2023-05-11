@@ -237,6 +237,7 @@ function resizeForSave(){
 
 function resizeForPreview(){
   var tempWidth, tempHeight;
+  sizeScale = 1;
 
   if(saveMode == 0){
     templateScale = 1;
@@ -253,6 +254,7 @@ function resizeForPreview(){
     templateScale = tempHeight/1920;
 
     resizeCanvas(tempWidth, tempHeight, WEBGL);
+    // console.log("VERTICAL! Here is the tempHeight: " + tempHeight + ", save scale is at " + sizeScale + " and template scale is: " + templateScale);
   } else if(saveMode == 2){
     if(windowWidth < windowHeight){
       tempWidth = windowWidth;
@@ -264,6 +266,8 @@ function resizeForPreview(){
     templateScale = tempHeight/1080;
 
     resizeCanvas(tempWidth, tempHeight, WEBGL);
+
+    // console.log("SQUARE! Here is the tempHeight: " + tempHeight + ", save scale is at " + sizeScale + " and template scale is: " + templateScale);
   }
 
   cwidth = width;
